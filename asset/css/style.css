@@ -1,0 +1,190 @@
+/* body {
+  background-color: #88cdf6;
+}
+.logo {
+  margin-left: 46.1vw;
+  margin-top: -1.5vh;
+} */
+
+
+/* DetaiUser */
+
+#more {
+    display: none;
+}
+
+body {
+    background-color: #88cdf6;
+}
+
+.logo {
+    margin-left: 45.6vw;
+    margin-top: -2vh;
+}
+
+
+/*-------------------------------------- Dashboard ---------------------------------------------*/
+
+.text1_1 {
+    margin-left: 11vw;
+    margin-top: -4vh;
+    font-size: 2.5rem;
+}
+
+.text1_2 {
+    margin-left: 11.5vw;
+    margin-top: 0.7vh;
+    font-size: 2.5vh;
+}
+
+.textBox1 {
+    height: 6vh;
+    width: 50%;
+    margin-left: 11.5vw;
+    /*border: 2px solid #015c92;*/
+    display: flex;
+    flex-direction: row;
+}
+
+.textBox1_1 {
+    width: 50%;
+    font-size: 2.5vh;
+    margin-top: 0.7vh;
+    /*border: 2px solid #015c92;*/
+}
+
+.th1 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.th1_1 {
+    width: 70%;
+    text-align: center;
+}
+
+.th1_2 {
+    width: 5vw;
+    text-align: center;
+}
+
+
+/*-------------------------------------- Package ---------------------------------------------*/
+
+.numRoomP {
+    margin-left: 2vw;
+    margin-top: -2vh;
+    width: 8.5vw;
+    height: 5vh;
+    /* border: 2px solid #015c92;  */
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.numRoomPS1 {
+    width: auto;
+    font-size: 3.5vh;
+}
+
+.numRoomPS2 {
+    margin-left: 0.5vw;
+    width: auto;
+    font-size: 3.5vh;
+}
+
+.text2_1 {
+    margin-left: 2vw;
+    margin-top: 1vh;
+    font-size: 2.5vh;
+    /* border: 2px solid #015c92;  */
+}
+
+.AddPackage {
+    margin-left: 2vw;
+    margin-top: 1vh;
+    width: 40%;
+    height: 5vh;
+    /* border: 2px solid #015c92;  */
+    display: flex;
+    flex-direction: row;
+}
+
+.APKF {
+    font-size: 2.5vh;
+    width: auto;
+}
+
+.APKS {
+    margin-top: 0.7vh;
+    width: auto;
+    margin-left: 1.5vw;
+}
+
+.APKBtt {
+    margin-left: 1vw;
+    margin-top: 0.2vh;
+    width: auto;
+}
+
+.text2_2 {
+    margin-left: 15vw;
+    margin-top: 5vh;
+    font-size: 2.5vh;
+
+    /* border: 2px solid #015c92;  */
+}
+
+
+/*-------------------------------------- DetailUser ---------------------------------------------*/
+
+.numRoomD {
+    margin-left: 2vw;
+    margin-top: -2vh;
+    width: auto;
+    height: 5vh;
+    /* border: 2px solid #015c92; */
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.numRoomDS1 {
+    width: auto;
+    font-size: 3.5vh;
+}
+
+.numRoomDS2 {
+    margin-left: 0.5vw;
+    width: auto;
+    font-size: 3.5vh;
+}
+
+.textAllDetail {
+    margin-left: 2vw;
+    margin-top: 1vh;
+    width: auto;
+    height: 3vh;
+    /* border: 2px solid #015c92; */
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.textAllDetail1 {
+    width: auto;
+    font-size: 2.5vh;
+}
+
+.textAllDetail2 {
+    margin-left: 0.5vw;
+    width: auto;
+    font-size: 2.5vh;
+}
+
+.textAllDetail3 {
+    margin-left: 1vw;
+    width: auto;
+    font-size: 2.5vh;
+}
