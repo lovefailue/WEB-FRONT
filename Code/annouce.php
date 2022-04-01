@@ -73,8 +73,7 @@
                 </div>
                 <!-- Sidebar Menu -->
                 <nav class="mt-4">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
@@ -86,8 +85,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="annouce.php" class="nav-link" data-toggle="modal" data-target="#AddModal"
-                                style="background:#53a7d8;">
+                            <a href="annouce.php" class="nav-link" data-toggle="modal" data-target="#AddModal" style="background:#53a7d8;">
                                 <i class="fas fa-bullhorn"></i>
                                 <p>
                                     ประกาศ
@@ -119,7 +117,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="All_username.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
+                            <a href="Register.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
                                 <i class="fas fa-user-plus"></i>
                                 <p>
                                     สร้างรหัสเข้าใช้ให้ผู้เช่า
@@ -145,22 +143,26 @@
                 <div class="container" style="margin-left:15vw;">
                     <div class="card-body">
                         <div class=" form-group">
-                            <input class="form-control" placeholder="เรื่อง:">
+                            <input class="form-control" placeholder="เรื่อง:" name="topic" id="topic">
+                        </div>
+                        <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
+                            <small id="errTopic"></small>
                         </div>
                     </div>
                 </div>
-                <div class="container date" style="margin-left:62.3vw; margin-top:-5vh; width:12vw;">
+                <div class="container" style="margin-left:15vw; margin-top:-2vh;">
                     <div class="card-body">
-                        <div class="form-group">
-                            <input class="form-control" type="date" name="mydate">
+                        <div class=" form-group">
+                            <input class="form-control" placeholder="เนื้อหา:" name="description" id="description">
+                        </div>
+                        <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
+                            <small id="errDes"></small>
                         </div>
                     </div>
                 </div>
-                <form action="annouce.php" method="post">
-                    <div class=" container" style="width:8vw; margin-top:-2vh ; margin-left:65.1vw">
-                        <button type="submit" class="btn btn-primary btn-block">ยืนยัน</button>
-                    </div>
-                    </from>
+                <div class=" container" style="width:8vw; margin-top:-2vh ; margin-left:65.1vw">
+                    <button type="submit" class="btn btn-primary btn-block" onclick="add_announce()">ยืนยัน</button>
+                </div>
             </div>
 
             <div class="histr" style="margin-left:20vw">
@@ -175,10 +177,8 @@
                                 <span class="info-box-number">วันที่: </span>
                             </div>
                             <div class="colum">
-                                <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>แก้ไข <i
-                                        class="fas fa-edit"></i></button>
-                                <button type="submit" class="btn btn-danger btn-block" style="width:5vw;"></a>ลบ <i
-                                        class="fas fa-trash-alt"></i></button>
+                                <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>แก้ไข <i class="fas fa-edit"></i></button>
+                                <button type="submit" class="btn btn-danger btn-block" style="width:5vw;"></a>ลบ <i class="fas fa-trash-alt"></i></button>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -193,10 +193,8 @@
                                 <span class="info-box-number">วันที่: </span>
                             </div>
                             <div class="colum">
-                                <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>แก้ไข <i
-                                        class="fas fa-edit"></i></button>
-                                <button type="submit" class="btn btn-danger btn-block" style="width:5vw;"></a>ลบ <i
-                                        class="fas fa-trash-alt"></i></button>
+                                <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>แก้ไข <i class="fas fa-edit"></i></button>
+                                <button type="submit" class="btn btn-danger btn-block" style="width:5vw;"></a>ลบ <i class="fas fa-trash-alt"></i></button>
                             </div>
 
                             <!-- /.info-box-content -->
@@ -213,10 +211,8 @@
                                 <span class="info-box-number">วันที่: </span>
                             </div>
                             <div class="colum">
-                                <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>แก้ไข <i
-                                        class="fas fa-edit"></i></button>
-                                <button type="submit" class="btn btn-danger btn-block" style="width:5vw;"></a>ลบ <i
-                                        class="fas fa-trash-alt"></i></button>
+                                <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>แก้ไข <i class="fas fa-edit"></i></button>
+                                <button type="submit" class="btn btn-danger btn-block" style="width:5vw;"></a>ลบ <i class="fas fa-trash-alt"></i></button>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -231,10 +227,8 @@
                                 <span class="info-box-number">วันที่: </span>
                             </div>
                             <div class="colum">
-                                <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>แก้ไข <i
-                                        class="fas fa-edit"></i></button>
-                                <button type="submit" class="btn btn-danger btn-block" style="width:5vw;"></a>ลบ <i
-                                        class="fas fa-trash-alt"></i></button>
+                                <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>แก้ไข <i class="fas fa-edit"></i></button>
+                                <button type="submit" class="btn btn-danger btn-block" style="width:5vw;"></a>ลบ <i class="fas fa-trash-alt"></i></button>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -249,59 +243,14 @@
                                 <span class="info-box-number">วันที่: </span>
                             </div>
                             <div class="colum">
-                                <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>แก้ไข <i
-                                        class="fas fa-edit"></i></button>
-                                <button type="submit" class="btn btn-danger btn-block" style="width:5vw;"></a>ลบ <i
-                                        class="fas fa-trash-alt"></i></button>
+                                <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>แก้ไข <i class="fas fa-edit"></i></button>
+                                <button type="submit" class="btn btn-danger btn-block" style="width:5vw;"></a>ลบ <i class="fas fa-trash-alt"></i></button>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
                         <!-- /.info-box -->
                     </div>
                 </div>
-                <button class="btn btn-warning btn-block" onclick="myFunction1()" id="myBtn"
-                    style=" width:7vw; margin-top:-1vh;">ดูเพิ่มเติม</button>
-                <span id="less"></span>
-                <span id="more">
-                    <div class="row" style="margin-top:1vh;">
-                        <div class="col-md-9 col-sm-6 col-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-info"> <i class="fas fa-bullhorn"></i></span>
-
-                                <div class="info-box-content">
-                                    <span class="info-box-text">เรื่อง: </span>
-                                    <span class="info-box-number">วันที่: </span>
-                                </div>
-                                <div class="colum">
-                                    <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>แก้ไข
-                                        <i class="fas fa-edit"></i></button>
-                                    <button type="submit" class="btn btn-danger btn-block" style="width:5vw;"></a>ลบ <i
-                                            class="fas fa-trash-alt"></i></button>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
-                        <div class="col-md-9 col-sm-6 col-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-info"> <i class="fas fa-bullhorn"></i></span>
-
-                                <div class="info-box-content">
-                                    <span class="info-box-text">เรื่อง: </span>
-                                    <span class="info-box-number">วันที่: </span>
-                                </div>
-                                <div class="colum">
-                                    <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>แก้ไข
-                                        <i class="fas fa-edit"></i></button>
-                                    <button type="submit" class="btn btn-danger btn-block" style="width:5vw;"></a>ลบ <i
-                                            class="fas fa-trash-alt"></i></button>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
-                    </div>
-                </span>
             </div>
         </div>
 
@@ -322,6 +271,9 @@
 
 
 
+        <script type="text/javascript" src="../asset/js/fetch.js"></script>
+        <script type="text/javascript" src="../asset/js/test.js"></script>
+        <!-- <script type="text/javascript" src="../asset/js/script_announce.js"></script> -->
 
 
         <!-- jQuery -->
@@ -329,9 +281,6 @@
         <!-- jQuery UI 1.11.4 -->
         <script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-        <script>
-        $.widget.bridge('uibutton', $.ui.button)
-        </script>
         <!-- ChartJS -->
         <script src="../plugins/chart.js/Chart.min.js"></script>
         <!-- Sparkline -->
@@ -357,23 +306,6 @@
         <!-- Toastr -->
         <script src="../plugins/toastr/toastr.min.js"></script>
         <!-- More -->
-        <script>
-        function myFunction1() {
-            var dots = document.getElementById("less");
-            var moreText = document.getElementById("more");
-            var btnText = document.getElementById("myBtn");
-
-            if (dots.style.display === "none") {
-                dots.style.display = "inline";
-                btnText.innerHTML = "ดูเพิ่มเติม";
-                moreText.style.display = "none";
-            } else {
-                dots.style.display = "none";
-                btnText.innerHTML = "ย่อลง";
-                moreText.style.display = "inline";
-            }
-        }
-        </script>
 </body>
 
 </html>

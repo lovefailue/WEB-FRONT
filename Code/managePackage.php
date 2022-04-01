@@ -114,7 +114,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="All_username.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
+                            <a href="Register.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
                                 <i class="fas fa-user-plus"></i>
                                 <p>
                                     สร้างรหัสเข้าใช้ให้ผู้เช่า

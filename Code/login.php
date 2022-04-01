@@ -72,7 +72,7 @@
 
 
                 <script type="text/javascript" src="assets/js/fetch.js"></script>
-                <script type="text/javascript" src="assets/js/script_1.js?version===1.0.1"></script>
+                <script type="text/javascript" src="assets/js/script_1.js"></script>
 
                 <!-- /.social-auth-links -->
 
