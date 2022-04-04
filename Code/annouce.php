@@ -272,7 +272,8 @@
 
 
         <script type="text/javascript" src="../asset/js/fetch.js"></script>
-        <script type="text/javascript" src="../asset/js/test.js"></script>
+        <script type="text/javascript" src="../asset/js/script_announce.js"></script>
+        
         <!-- <script type="text/javascript" src="../asset/js/script_announce.js"></script> -->
 
 

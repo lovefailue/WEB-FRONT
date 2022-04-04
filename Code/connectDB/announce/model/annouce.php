@@ -11,7 +11,7 @@
             $query = "INSERT INTO `annouce` (`announce_id`,`date`,`topic`,`description`)VALUES (:announce_id,NOW(),:topic,:description);";
             try{
                 $stmt1 = $this->conn->prepare($query);
-                $stmt1->bindParam(":announce_id",$announce_id,PDO::PARAM_STR);
+                $stmt1->bindParam(":announce_id",$annouce_id,PDO::PARAM_STR);
                 $stmt1->bindParam(":topic",$inpData['topic'],PDO::PARAM_STR);
                 $stmt1->bindParam(":description",$inpData['description'],PDO::PARAM_STR);
                 $stmt1->execute();
