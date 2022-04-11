@@ -136,28 +136,16 @@
         }
         function editPassword($inpData){
             $tokenNew = $this->generateToken($inpData['username'],$inpData['passwordNew']);
-            $tokenOld = $this->generateToken($inpData['username'],$inpData['password']);
-            $query = "SELECT * FROM `account` WHERE `account_id`=:account_id AND `token`=:token;";
+            // $tokenOld = $this->generateToken($inpData['username'],$inpData['password']);
+            // $query = "SELECT * FROM `account` WHERE `account_id`=:account_id AND `token`=:token;";
             $query2 = "UPDATE `account` SET `token`=:token WHERE `account_id`=:account_id;";
             try{
-                $stmt1 = $this->conn->prepare($query);
-                
-                $stmt1->bindParam(":account_id",$inpData['account_id'],PDO::PARAM_STR);
-                $stmt1->bindParam(":token",$tokenOld,PDO::PARAM_STR);
-                $stmt1->execute();
-                $rowcount = $stmt1->rowCount();
-                if($rowcount == 0){
-                    return array("status"=>"fail","msg"=>"password is incorrect");
-                }else{
-                    $stmt2 = $this->conn->prepare($query2);
-                    
-                    $stmt2->bindParam(":account_id",$inpData['account_id'],PDO::PARAM_STR);
-                    $stmt2->bindParam(":token",$tokenNew,PDO::PARAM_STR);
-                    $stmt2->execute();
+                $stmt2->bindParam(":account_id",$inpData['account_id'],PDO::PARAM_STR);
+                $stmt2->bindParam(":token",$tokenNew,PDO::PARAM_STR);
+                $stmt2->execute();
                 
                 
-                    return array("status"=>"success","msg"=>"update password successfully","token"=>$tokenNew,"data"=>null);
-                }
+                return array("status"=>"success","msg"=>"update password successfully","token"=>$tokenNew,"data"=>null);
                 
             }catch(PDOException $e){
                 return array("status"=>"error","msg"=>$e->getMessage());
@@ -194,6 +182,8 @@
                 $data = array();
                 while ($row=$stmt1->fetch()){
                     $el = array(
+                        "account_id"=>$row['account_id'],
+                        "room"=>$row['room'],
                         "status"=>$row['status']
                     );
                     array_push($data,$el);

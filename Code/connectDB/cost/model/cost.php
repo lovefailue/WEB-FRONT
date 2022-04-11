@@ -110,57 +110,65 @@
                 return array("status"=>"error","msg"=>$e->getMessage());
             }
         }
-        function GetListRoomCost ($inpData){
+        function GetListRoomCost ($room){
            $query = "SELECT * FROM `billcost` WHERE `room`=:room;";
            try{
                $stmt1 = $this->conn->prepare($query);
-               $stmt1->bindParam(":room",$inpData['room'],PDO::PARAM_STR);
+               $stmt1->bindParam(":room",$room,PDO::PARAM_STR);
                $stmt1->execute();
                $data = array();
-                
-               while ($row=$stmt1->fetch()){
-                   $el = array(
-                        "cost_id"=>$row["cost_id"],
-                        "date_cost" =>$row['date_cost'],
-                        "room"=>$row['room'],
-                        "status"=>$row['status']
-                        
-                   );
-                   array_push($data,$el);
-               }
-                return array("status"=>"success","msg"=>"-","data"=>$data);
+                if($row=$stmt1->fetch()==null){
+                    return array("status"=>"fail","msg"=>"-");
+                }else{
+                    while ($row=$stmt1->fetch()){
+                        $el = array(
+                                "cost_id"       =>$row["cost_id"],
+                                "date_cost"     =>$row['date_cost'],
+                                "room"          =>$row['room'],
+                                "status"        =>$row['status']
+                                
+                        );
+                        array_push($data,$el);
+                    }
+                    return array("status"=>"success","msg"=>"-","data"=>$data);
+                }
+               
            }catch(PDOException $e){
                 return array("status"=>"error","msg"=>$e->getMessage());
            } 
         }
-        function GetDetailCost($inpData){
+        function GetDetailCost($cost_id){
             $query = "SELECT * FROM `billcost` WHERE `cost_id`=:cost_id;";
             try{
                $stmt1 = $this->conn->prepare($query);
-               $stmt1->bindParam(":cost_id",$inpData['cost_id'],PDO::PARAM_STR);
+               $stmt1->bindParam(":cost_id",$cost_id,PDO::PARAM_STR);
                $stmt1->execute();
                $data = array();
-               
-               while ($row=$stmt1->fetch()){
-                   $el = array(
-                        "cost_id"=>$row["cost_id"],
-                        "date_cost" =>$row['date_cost'],
-                        "room"=>$row['room'],
-                        "elc_cost"=>$row['elc_cost'],
-                        "water_cost"=>$row['water_cost'],
-                        "room_cost"=>$row['room_cost'],
-                        "elc_unit"=>$row['elc_unit'],
-                        "total"=>$row['total'],
-                        "status"=>$row['status']
-                        
-                   );
-                   array_push($data,$el);
+               $row=$stmt1->fetch();
+               if($row==null){
+                   return array("status"=>"fail","msg"=>"-");
+               }else{
+                   while ($row=$stmt1->fetch()){
+                        $el = array(
+                            "cost_id"       =>$row["cost_id"],
+                            "date_cost"     =>$row['date_cost'],
+                            "room"          =>$row['room'],
+                            "elc_cost"      =>$row['elc_cost'],
+                            "water_cost"    =>$row['water_cost'],
+                            "room_cost"     =>$row['room_cost'],
+                            "elc_unit"      =>$row['elc_unit'],
+                            "total"         =>$row['total'],
+                            "status"        =>$row['status']
+                            
+                        );
+                        array_push($data,$el);
+                   }
+                   return array("status"=>"success","msg"=>"-","data"=>$data);
                }
-               return array("status"=>"success","msg"=>"-","data"=>$data);
+               
             }catch(PDOException $e){
                 return array("status"=>"error","msg"=>$e->getMessage());
            }
         } 
     }
-
 ?>

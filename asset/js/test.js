@@ -7,7 +7,7 @@ async function load() {
         "topic": "ปิดหอ",
         "description": "ตั้งแต่1-1"
     }  
-    let resData = await postApi("../Code/connectDB/announce/add-announce.php", reqBody);
+    let resData = await postApi("../Code/connectDB/announce/add-complain.php", reqBody);
     console.log(resData)
 }
 load();

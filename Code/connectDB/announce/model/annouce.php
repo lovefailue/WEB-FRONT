@@ -84,5 +84,21 @@
                 return array("status"=>"error","msg"=>$e->getMessage());
             }
         }
+
+        function EditAnnounce($inpData) {
+            $sql = "UPDATE `annouce` SET `topic`=:topic, `description`=:description WHERE `announce_id`=:announce_id;";
+            try{
+                $stmt1 = $this->conn->prepare($sql);
+                $stmt1->bindParam(":topic",$inpData['topic'],PDO::PARAM_STR);
+                $stmt1->bindParam(":description",$inpData['description'],PDO::PARAM_STR);
+                $stmt1->bindParam(":announce_id",$inpData['announce_id'],PDO::PARAM_STR);
+                
+                $stmt1->execute();
+
+                return array("status"=>"success","msg"=>"edit announce successfully");
+            }catch(PDOException $e){
+                return array("status"=>"error","msg"=>$e->getMessage());
+            }
+        }
     }
 ?>

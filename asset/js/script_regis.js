@@ -140,7 +140,7 @@ async function regis() {
         };
         let resData = await postApi("../Code/connectDB/account/account/create-account.php", reqBody);
         console.log(resData);
-        window.open("All_username.php", "_self");
+        window.open("Dashboard.php", "_self");
     }
     
 }

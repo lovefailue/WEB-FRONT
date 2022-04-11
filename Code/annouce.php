@@ -39,10 +39,10 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
-    <div class=" wrapper" style="width:98.5vw">
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="width:100wv">
+    <div class=" wrapper">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
-            <ul class="navbar-nav" style="width:100px;">
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
@@ -168,90 +168,45 @@
             <div class="histr" style="margin-left:20vw">
                 <h1>ประวัติการประกาศ <i class="fas fa-bullhorn"></i></h1>
                 <div class="row">
-                    <div class="col-md-9 col-sm-6 col-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-info"> <i class="fas fa-bullhorn"></i></span>
+                    <div class="col-md-9 col-sm-6 col-12" id="box_announce">
 
-                            <div class="info-box-content">
-                                <span class="info-box-text">เรื่อง:</span>
-                                <span class="info-box-number">วันที่: </span>
-                            </div>
-                            <div class="colum">
-                                <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>แก้ไข <i class="fas fa-edit"></i></button>
-                                <button type="submit" class="btn btn-danger btn-block" style="width:5vw;"></a>ลบ <i class="fas fa-trash-alt"></i></button>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <div class="col-md-9 col-sm-6 col-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-info"> <i class="fas fa-bullhorn"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">เรื่อง: </span>
-                                <span class="info-box-number">วันที่: </span>
-                            </div>
-                            <div class="colum">
-                                <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>แก้ไข <i class="fas fa-edit"></i></button>
-                                <button type="submit" class="btn btn-danger btn-block" style="width:5vw;"></a>ลบ <i class="fas fa-trash-alt"></i></button>
-                            </div>
-
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-
-                    <div class="col-md-9 col-sm-6 col-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-info"> <i class="fas fa-bullhorn"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">เรื่อง: </span>
-                                <span class="info-box-number">วันที่: </span>
-                            </div>
-                            <div class="colum">
-                                <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>แก้ไข <i class="fas fa-edit"></i></button>
-                                <button type="submit" class="btn btn-danger btn-block" style="width:5vw;"></a>ลบ <i class="fas fa-trash-alt"></i></button>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <div class="col-md-9 col-sm-6 col-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-info"> <i class="fas fa-bullhorn"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">เรื่อง: </span>
-                                <span class="info-box-number">วันที่: </span>
-                            </div>
-                            <div class="colum">
-                                <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>แก้ไข <i class="fas fa-edit"></i></button>
-                                <button type="submit" class="btn btn-danger btn-block" style="width:5vw;"></a>ลบ <i class="fas fa-trash-alt"></i></button>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <div class="col-md-9 col-sm-6 col-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-info"> <i class="fas fa-bullhorn"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">เรื่อง: </span>
-                                <span class="info-box-number">วันที่: </span>
-                            </div>
-                            <div class="colum">
-                                <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>แก้ไข <i class="fas fa-edit"></i></button>
-                                <button type="submit" class="btn btn-danger btn-block" style="width:5vw;"></a>ลบ <i class="fas fa-trash-alt"></i></button>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
                         <!-- /.info-box -->
                     </div>
                 </div>
             </div>
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <br>
+                    <div class="input-group mb-3" style="display:none;">
+                        <input type="text" class="form-control" placeholder="เรื่อง" name="editID" id="editID" value="">
+                    </div>
+                    <p>เรื่อง</p>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="เรื่อง" name="editTopic" id="editTopic" value="">
+                    </div>
+                    <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
+                        <small id="errNewTopic"></small>
+                    </div>
+                    <p>เนื้อหา</p>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="เนิ้อหา" name="editDescription" id="editDescription" value="">
+                    </div>
+                    <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
+                        <small id="errNewDesc"></small>
+                    </div>
+                    <div style="margin:0 auto;">
+                        <button type="submit" class="btn btn-warning btn-block" style="width:5vw;" onclick="editData()"></a>แก้ไข <i class="fas fa-edit"></i></button>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
 
@@ -272,9 +227,8 @@
 
 
         <script type="text/javascript" src="../asset/js/fetch.js"></script>
-        <script type="text/javascript" src="../asset/js/script_announce.js"></script>
-        
-        <!-- <script type="text/javascript" src="../asset/js/script_announce.js"></script> -->
+        <script type="text/javascript" src="../asset/js/script_add-announce.js"></script>
+        <script type="text/javascript" src="../asset/js/script_GetAnnounce.js"></script>
 
 
         <!-- jQuery -->
@@ -307,6 +261,25 @@
         <!-- Toastr -->
         <script src="../plugins/toastr/toastr.min.js"></script>
         <!-- More -->
+
+        <script>
+            var modal = document.getElementById("myModal");
+            var span = document.getElementsByClassName("close")[0];
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+
+
+
 </body>
 
 </html>

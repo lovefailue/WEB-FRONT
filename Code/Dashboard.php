@@ -74,13 +74,11 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-4">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="Dashboard.php" class="nav-link" data-toggle="modal" data-target="#AddModal"
-                                style="background:#53a7d8;">
+                            <a href="Dashboard.php" class="nav-link" data-toggle="modal" data-target="#AddModal" style="background:#53a7d8;">
                                 <i class="fas fa-home"></i>
                                 <p>
                                     หน้าแรก
@@ -147,17 +145,12 @@
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="text1_1"><i class="fas fa-house-user"></i> ข้อมูลหอพัก </div>
-                    <div class="text1_2">จำนวนห้องเช่าทั้งหมด : 8</div>
-                    <div class="textBox1">
-                        <div class="textBox1_1">จำนวนห้องที่มีผู้เช่า : 6</div>
-                        <div class="textBox1_1">จำนวนห้องที่ว่าง : 2</div>
-                    </div>
                 </div>
             </section>
             <section class="content" style="width: 70%; margin-left: 12vw; margin-top: 1vh;">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12" >
                             <div class="card">
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -165,218 +158,31 @@
                                         <thead>
                                             <tr>
                                                 <th style="text-align: center">เลขที่ห้องพัก</th>
-                                                <th style="text-align: center">สถานะ</th>
-                                                <th style="text-align: center">สถานะการสำระเงินค่าเช่า
-                                                </th>
+                                                <th style="text-align: center">ข้อมูลผู้เข้าพัก</th>
+                                                <th style="text-align: center">จัดการพัสดุ</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td style="text-align: center">A1</td>
-                                                <td>
-                                                    <div class="th1">
-                                                        <div class="th1_1">ว่าง</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="th1">
-                                                        <div class="th1_1">ไม่มียอดค้างชำระ</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: center">A2</td>
-                                                <td>
-                                                    <div class="th1">
-                                                        <div class="th1_1">ไม่ว่าง</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="th1">
-                                                        <div class="th1_1">ไม่มียอดค้างชำระ</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: center">A3</td>
-                                                <td>
-                                                    <div class="th1">
-                                                        <div class="th1_1">ไม่ว่าง</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="th1">
-                                                        <div class="th1_1">ไม่มียอดค้างชำระ</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: center">A4</td>
-                                                <td>
-                                                    <div class="th1">
-                                                        <div class="th1_1">ไม่ว่าง</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="th1">
-                                                        <div class="th1_1">มียอดค้างชำระ</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: center">A5</td>
-                                                <td>
-                                                    <div class="th1">
-                                                        <div class="th1_1">ไม่ว่าง</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="th1">
-                                                        <div class="th1_1">ไม่มียอดค้างชำระ</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: center">A6</td>
-                                                <td>
-                                                    <div class="th1">
-                                                        <div class="th1_1">ไม่ว่าง</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="th1">
-                                                        <div class="th1_1">มียอดค้างชำระ</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: center">A7</td>
-                                                <td>
-                                                    <div class="th1">
-                                                        <div class="th1_1">ไม่ว่าง</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="th1">
-                                                        <div class="th1_1">มียอดค้างชำระ</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: center">A8</td>
-                                                <td>
-                                                    <div class="th1">
-                                                        <div class="th1_1">ว่าง</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="th1">
-                                                        <div class="th1_1">ไม่มียอดค้างชำระ</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                        <tbody id="table_dasboard">
+                                        </tbody>
                                     </table>
                                 </div>
-                                <!-- /.card-body -->
                             </div>
                         </div>
-                        <!-- /.col -->
                     </div>
-                    <!-- /.row -->
                 </div>
-                <!-- /.container-fluid -->
             </section>
         </div>
 
 
+
+        <script type="text/javascript" src="../asset/js/fetch.js"></script>
+        <script type="text/javascript" src="../asset/js/script_showDashboard.js"></script>
 
 
 
 
         <!-- jQuery -->
         <script src="../plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- DataTables  & Plugins -->
         <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
         <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -397,34 +203,34 @@
         <!-- SweetAlert2 -->
         <script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
         <script>
-        $(function() {
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-                "pageLength": 10
+            $(function() {
+                $('#example2').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": true,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false,
+                    "responsive": true,
+                    "pageLength": 10
+                });
             });
-        });
         </script>
         <script>
-        $(function() {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000
+            $(function() {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+                $(document).ready(function() {
+                    Toast.fire({
+                        icon: 'success',
+                        title: ' ยินดีต้อนรับ Admin'
+                    })
+                });
             });
-            $(document).ready(function() {
-                Toast.fire({
-                    icon: 'success',
-                    title: ' ยินดีต้อนรับ Admin'
-                })
-            });
-        });
         </script>
 </body>
 

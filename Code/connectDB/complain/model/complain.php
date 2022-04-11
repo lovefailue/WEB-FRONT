@@ -27,14 +27,14 @@
         
         function AddComplain($inpData){           
             $comp_id = $this->uuidv4();
-            $query = "INSERT INTO `complain` (`complain_id`,`topic`,`description`,`account_id`,`name`,`tel`,`room`,`date`,`status`) VALUES (:complain_id,:topic,:desct,:account_id,:name,:tel,:room,NOW(),'ยังไม่ได้รับเรื่อง');";
+            $query = "INSERT INTO `complain` (`complain_id`,`topic`,`description`,`account_id`,`name`,`tel`,`room`,`date`,`status`) VALUES (:complain_id,:topic,:description,:account_id,:name,:tel,:room,NOW(),'ยังไม่ได้รับเรื่อง');";
             // $query2 = "INSERT INTO `complain_img` (`complain_id`, `image`) VALUES (:complain_id,:images);";
 
             try{
                 $stmt1 = $this->conn->prepare($query);
                 $stmt1->bindParam(":complain_id",$comp_id,PDO::PARAM_STR);
                 $stmt1->bindParam(":topic",$inpData['topic'],PDO::PARAM_STR);
-                $stmt1->bindParam(":desct",$inpData['description'],PDO::PARAM_STR);
+                $stmt1->bindParam(":description",$inpData['description'],PDO::PARAM_STR);
                 $stmt1->bindParam(":account_id",$inpData['account_id'],PDO::PARAM_STR);
                 $stmt1->bindParam(":name",$inpData['name'],PDO::PARAM_STR);
                 $stmt1->bindParam(":tel",$inpData['tel'],PDO::PARAM_STR);
@@ -64,6 +64,8 @@
                 
                 while ($row=$stmt1->fetch()){
                     $el = array(
+                        "room" =>$row['room'],
+                        "description" =>$row['description'],
                         "date" =>$row['date'],
                         "topic"=>$row['topic'],
                         "status"=>$row['status']
@@ -77,16 +79,17 @@
                 return array("status"=>"error","msg"=>$e->getMessage());
             }
         }
-        function GetListRoomComplain ($inpData){
+        function GetListRoomComplain ($room){
             $query = "SELECT * FROM `complain` WHERE `room`=:room;";
             try{
                 $stmt1 = $this->conn->prepare($query);
-                $stmt1->bindParam(":room",$inpData['room'],PDO::PARAM_STR);
+                $stmt1->bindParam(":room",$room,PDO::PARAM_STR);
                 $stmt1->execute();
                 $data = array();
                 
                 while ($row=$stmt1->fetch()){
                     $el = array(
+                        "description" =>$row['description'],
                         "date" =>$row['date'],
                         "topic"=>$row['topic'],
                         "status"=>$row['status']

@@ -39,7 +39,6 @@
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
@@ -72,8 +71,7 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-4">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
@@ -101,8 +99,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="complain.php" class="nav-link" data-toggle="modal" data-target="#AddModal"
-                                style="background:#53a7d8;">
+                            <a href="complain.php" class="nav-link" data-toggle="modal" data-target="#AddModal" style="background:#53a7d8;">
                                 <i class="fas fa-tools"></i>
                                 <p>
                                     ร้องเรียน/แจ้งซ่อม
@@ -143,167 +140,11 @@
             <div class="histr" style="margin-left:20vw">
                 <h1>เรื่องแจ้งซ่อม/ร้องเรียน <i class="fas fa-tools"></i></h1>
                 <div class="row" style="margin-top:2vh;">
-                    <div class="col-md-9 col-sm-6 col-10">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-info"> <i class="fas fa-tools"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">เรื่อง:</span>
-                                <span class="info-box-number">วันที่: </span>
-                            </div>
-                            <div class="colum" style="margin-top:1.5vh">
-                                <button type=" submit" class="btn btn-success btn-block" style="width:5vw;"></a>ยืนยัน
-                                    <i class="fas fa-check-circle"></i></button>
-                            </div>
-
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <div class="col-md-9 col-sm-6 col-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-info"> <i class="fas fa-tools"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">เรื่อง: </span>
-                                <span class="info-box-number">วันที่: </span>
-                            </div>
-                            <div class="colum" style="margin-top:1.5vh">
-                                <button type=" submit" class="btn btn-success btn-block" style="width:5vw;"></a>ยืนยัน
-                                    <i class="fas fa-check-circle"></i></button>
-                            </div>
-
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <div class="col-md-9 col-sm-6 col-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-info"><i class="fas fa-tools"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">เรื่อง: </span>
-                                <span class="info-box-number">วันที่: </span>
-                            </div>
-                            <div class="colum" style="margin-top:1.5vh">
-                                <button type=" submit" class="btn btn-success btn-block" style="width:5vw;"></a>ยืนยัน
-                                    <i class="fas fa-check-circle"></i></button>
-                            </div>
-
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-
-                    <div class="col-md-9 col-sm-6 col-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-info"> <i class="fas fa-tools"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">เรื่อง: </span>
-                                <span class="info-box-number">วันที่: </span>
-                            </div>
-                            <div class="colum" style="margin-top:1.5vh">
-                                <button type=" submit" class="btn btn-success btn-block" style="width:5vw;"></a>ยืนยัน
-                                    <i class="fas fa-check-circle"></i></button>
-                            </div>
-
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-
-                    <div class="col-md-9 col-sm-6 col-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-info"> <i class="fas fa-tools"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">เรื่อง: </span>
-                                <span class="info-box-number">วันที่: </span>
-                            </div>
-                            <div class="colum" style="margin-top:1.5vh">
-                                <button type=" submit" class="btn btn-success btn-block" style="width:5vw;"></a>ยืนยัน
-                                    <i class="fas fa-check-circle"></i></button>
-                            </div>
-
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <div class="col-md-9 col-sm-6 col-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-info"> <i class="fas fa-tools"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">เรื่อง: </span>
-                                <span class="info-box-number">วันที่: </span>
-                            </div>
-                            <div class="colum" style="margin-top:1.5vh">
-                                <button type=" submit" class="btn btn-success btn-block" style="width:5vw;"></a>ยืนยัน
-                                    <i class="fas fa-check-circle"></i></button>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <div class="col-md-9 col-sm-6 col-12">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-info"> <i class="fas fa-tools"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">เรื่อง: </span>
-                                <span class="info-box-number">วันที่: </span>
-                            </div>
-                            <div class="colum" style="margin-top:1.5vh">
-                                <button type=" submit" class="btn btn-success btn-block" style="width:5vw;"></a>ยืนยัน
-                                    <i class="fas fa-check-circle"></i></button>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
+                    <div class="col-md-9 col-sm-6 col-10" id="box_complain">
+                        
                         <!-- /.info-box -->
                     </div>
                 </div>
-                <button class="btn btn-warning btn-block" onclick="myFunction()" id="myBtn"
-                    style=" width:7vw; margin-top:-1vh;">ดูเพิ่มเติม</button>
-                <span id="less"></span>
-                <span id="more">
-                    <div class="row" style="margin-top:1vh;">
-                        <div class="col-md-9 col-sm-6 col-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-info"> <i class="fas fa-tools"></i></span>
-
-                                <div class="info-box-content">
-                                    <span class="info-box-text">เรื่อง: </span>
-                                    <span class="info-box-number">วันที่: </span>
-                                </div>
-                                <div class="colum" style="margin-top:1.5vh">
-                                    <button type=" submit" class="btn btn-success btn-block"
-                                        style="width:5vw;"></a>ยืนยัน
-                                        <i class="fas fa-check-circle"></i></button>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
-                        <div class="col-md-9 col-sm-6 col-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-info"> <i class="fas fa-tools"></i></span>
-
-                                <div class="info-box-content">
-                                    <span class="info-box-text">เรื่อง: </span>
-                                    <span class="info-box-number">วันที่: </span>
-                                </div>
-                                <div class="colum" style="margin-top:1.5vh">
-                                    <button type=" submit" class="btn btn-success btn-block"
-                                        style="width:5vw;"></a>ยืนยัน
-                                        <i class="fas fa-check-circle"></i></button>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
-                    </div>
-                </span>
             </div>
         </div>
 
@@ -362,7 +203,8 @@
 
 
 
-
+        <script type="text/javascript" src="../asset/js/fetch.js"></script>
+        <script type="text/javascript" src="../asset/js/script_GetComplain.js"></script>
 
 
         <!-- jQuery -->
@@ -371,7 +213,7 @@
         <script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
-        $.widget.bridge('uibutton', $.ui.button)
+            $.widget.bridge('uibutton', $.ui.button)
         </script>
         <!-- ChartJS -->
         <script src="../plugins/chart.js/Chart.min.js"></script>
@@ -397,23 +239,6 @@
         <script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
         <!-- Toastr -->
         <script src="../plugins/toastr/toastr.min.js"></script>
-        <script>
-        function myFunction() {
-            var dots = document.getElementById("less");
-            var moreText = document.getElementById("more");
-            var btnText = document.getElementById("myBtn");
-
-            if (dots.style.display === "none") {
-                dots.style.display = "inline";
-                btnText.innerHTML = "ดูเพิ่มเติม";
-                moreText.style.display = "none";
-            } else {
-                dots.style.display = "none";
-                btnText.innerHTML = "ย่อลง";
-                moreText.style.display = "inline";
-            }
-        }
-        </script>
 
 </body>
 
