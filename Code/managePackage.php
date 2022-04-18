@@ -28,7 +28,7 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="../asset/css/style.css">
@@ -68,8 +68,7 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-4">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
@@ -89,27 +88,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="DetailUser.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
-                                <i class="fas fa-address-card"></i>
-                                <p>
-                                    ข้อมูลผู้อยู่อาศัย
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="complain.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
                                 <i class="fas fa-tools"></i>
                                 <p>
                                     ร้องเรียน/แจ้งซ่อม
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="package.php" class="nav-link" data-toggle="modal" data-target="#AddModal"
-                                style="background:#53a7d8;">
-                                <i class="fas fa-box-open"></i>
-                                <p>
-                                    จัดการพัสดุ
                                 </p>
                             </a>
                         </li>
@@ -144,18 +126,17 @@
                 <div class="container-fluid">
                     <div class="numRoomP">
                         <div class="numRoomPS1">ห้อง :</div>
-                        <div class="numRoomPS2">A2</div>
+                        <div class="numRoomPS2" id="room"></div>
                     </div>
                     <div class="text2_1">เพิ่มพัสดุ</div>
 
                     <div class="AddPackage">
                         <div class="APKF">เลขพัสดุ :</div>
                         <div class="APKS">
-                            <input type="addpackage" placeholder="เลขพัสดุ" style="width: 17vw"></input>
+                            <input type="addpackage" placeholder="เลขพัสดุ" style="width: 17vw" id="NumPost"></input>
                         </div>
                         <div class="APKBtt">
-                            <button type="button" class="btn btn-block btn-success">เพิ่ม <i
-                                    class="fas fa-plus-circle"></i></button>
+                            <button type="button" class="btn btn-block btn-success" onclick="addPostLoad()">เพิ่ม <i class="fas fa-plus-circle"></i></button>
                         </div>
                     </div>
                 </div>
@@ -176,51 +157,11 @@
                                                 <th style="text-align: center;">เลชพัสดุ</th>
                                                 <th style="text-align: center;">วันที่</th>
                                                 <th style="text-align: center;">สถานะ</th>
+                                                <th style="text-align: center;">ลบพัสดุ</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td style="text-align: center;">SDOF5064848141</td>
-                                                <td style="text-align: center;">12/10/2561</td>
-                                                <td style="text-align: center;">
-                                                    <div class="th1">
-                                                        <div class="th1_1">ยังไม่ได้ได้รับพัสดุ</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: center;">PPSF5064823331</td>
-                                                <td style="text-align: center;">26/09/2561</td>
-                                                <td style="text-align: center;">
-                                                    <div class="th1">
-                                                        <div class="th1_1">ได้รับพัสดุแล้ว</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: center;">PPSF5064823331</td>
-                                                <td style="text-align: center;">03/09/2561</td>
-                                                <td style="text-align: center;">
-                                                    <div class="th1">
-                                                        <div class="th1_1">ได้รับพัสดุแล้ว</div>
-                                                        <div class="th1_2">
-                                                            <button type="submit" class="btn btn-warning btn-block"
-                                                                style="width:5vw;"></a>แก้ไข <i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                        <tbody id="table_post">
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -236,19 +177,32 @@
             </section>
         </div>
 
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div style="text-align: center;">
+                    <h2>จะลบจริงอ่อ</h2>
+                </div>
+                <br>
+                <div style="margin:0 auto;">
+                    <button type="submit" class="btn btn-warning btn-block" style="width:5vw;" id="confirmDelete"></a>ตกลง <i class="fas fa-edit"></i></button>
+                </div>
+            </div>
+        </div>
 
 
 
 
 
 
+        <script type="text/javascript" src="../asset/js/fetch.js"></script>
+        <script type="text/javascript" src="../asset/js/script_package.js"></script>
 
 
 
         <!-- jQuery -->
         <script src="../plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- DataTables  & Plugins -->
         <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
         <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -268,23 +222,39 @@
         <script src="../dist/js/demo.js"></script>
         <!-- Page specific script -->
         <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
+            $(function() {
+                $("#example1").DataTable({
+                    "responsive": true,
+                    "lengthChange": false,
+                    "autoWidth": true,
+                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                $('#example2').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": true,
+                    "responsive": true,
+                });
             });
-        });
+        </script>
+
+        <script>
+            var modal = document.getElementById("myModal");
+            var span = document.getElementsByClassName("close")[0];
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
         </script>
 
 </body>

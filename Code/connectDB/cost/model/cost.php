@@ -110,32 +110,28 @@
                 return array("status"=>"error","msg"=>$e->getMessage());
             }
         }
-        function GetListRoomCost ($room){
-           $query = "SELECT * FROM `billcost` WHERE `room`=:room;";
-           try{
-               $stmt1 = $this->conn->prepare($query);
-               $stmt1->bindParam(":room",$room,PDO::PARAM_STR);
-               $stmt1->execute();
-               $data = array();
-                if($row=$stmt1->fetch()==null){
-                    return array("status"=>"fail","msg"=>"-");
-                }else{
-                    while ($row=$stmt1->fetch()){
-                        $el = array(
-                                "cost_id"       =>$row["cost_id"],
-                                "date_cost"     =>$row['date_cost'],
-                                "room"          =>$row['room'],
-                                "status"        =>$row['status']
-                                
-                        );
-                        array_push($data,$el);
-                    }
-                    return array("status"=>"success","msg"=>"-","data"=>$data);
+        function GetListRoomCost($room){
+            $query = "SELECT * FROM `billcost` WHERE `room`=:room;";
+            try{
+                $stmt1 = $this->conn->prepare($query);
+                $stmt1->bindParam(":room",$room,PDO::PARAM_STR);
+                $stmt1->execute();
+                $data = array();
+                
+                while ($row=$stmt1->fetch()){
+                    $el = array(
+                        "cost_id"       =>$row['cost_id'],
+                        "date_cost"     =>$row['date_cost'],
+                        "room"          =>$row['room'],
+                        "status"        =>$row['status']
+                    );
+                    array_push($data,$el);
                 }
-               
-           }catch(PDOException $e){
+                return array("status"=>"success","msg"=>"-","data"=>$data);
+                
+            }catch(PDOException $e){
                 return array("status"=>"error","msg"=>$e->getMessage());
-           } 
+            } 
         }
         function GetDetailCost($cost_id){
             $query = "SELECT * FROM `billcost` WHERE `cost_id`=:cost_id;";

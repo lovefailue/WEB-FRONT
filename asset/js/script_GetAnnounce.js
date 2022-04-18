@@ -17,13 +17,12 @@ function showData(data) {
                 <span class="info-box-icon bg-info"> <i class="fas fa-bullhorn"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text" style="display:none;" id = "dataID">เรื่อง : ${data[i].announce_id}</span>
-                        <span class="info-box-text">เรื่อง : ${data[i].topic}</span>
-                        <p class="info-box-text" style="word-break: break-all; white-space: normal; width:35vw;">เนื้อหา : ${data[i].description}</p>
-                        <span class="info-box-number">วันที่ : ${data[i].date}</span>
+                        <span class="info-box-text" style="display:none;" id = "dataID">เรื่อง: ${data[i].announce_id}</span>
+                        <span class="info-box-text">เรื่อง: ${data[i].topic}</span>
+                        <p class="info-box-text" style="word-break: break-all; white-space: normal; width:35vw;">เนื้อหา: ${data[i].description}</p>
+                        <span class="info-box-number">วันที่: ${data[i].date}</span>
                     </div>
                     <div class="colum">
-                        <button type="submit" class="btn btn-warning btn-block" style="width:5vw;" onclick="showEditData('${data[i].announce_id}','${data[i].topic}','${data[i].description}')"></a>แก้ไข <i class="fas fa-edit"></i></button>
                         <button type="submit" class="btn btn-danger btn-block" style="width:5vw;" onclick="deleteData('${data[i].announce_id}')"></a>ลบ <i class="fas fa-trash-alt"></i></button>
                     </div>
                 <!-- /.info-box-content -->
@@ -42,52 +41,52 @@ async function deleteData(data) {
     window.location.reload();
 }
 
-function checkNewTopic() {
-    const topic = document.getElementById("EditTopic").value;
-    if (topic == "") {
-        document.getElementById("errNewTopic").innerHTML = "กรุณากรอกหัวเรื่อง";
-        return false;
-    }
-    else {
-        document.getElementById("errNewTopic").innerHTML = "";
-        return true;
-    }
-}
+// function checkNewTopic() {
+//     const topic = document.getElementById("EditTopic").value;
+//     if (topic == "") {
+//         document.getElementById("errNewTopic").innerHTML = "กรุณากรอกหัวเรื่อง";
+//         return false;
+//     }
+//     else {
+//         document.getElementById("errNewTopic").innerHTML = "";
+//         return true;
+//     }
+// }
 
-function checkNewDesc() {
-    const description = document.getElementById("editDescription").value;
-    if (description == "") {
-        document.getElementById("errNewDes").innerHTML = "กรุณากรอกรายละเอียด";
-        return false;
-    }
-    else {
-        document.getElementById("errNewDes").innerHTML = "";
-        return true;
-    }
-}
+// function checkNewDesc() {
+//     const description = document.getElementById("editDescription").value;
+//     if (description == "") {
+//         document.getElementById("errNewDes").innerHTML = "กรุณากรอกรายละเอียด";
+//         return false;
+//     }
+//     else {
+//         document.getElementById("errNewDes").innerHTML = "";
+//         return true;
+//     }
+// }
 
-function showEditData(id, topic, desc) {
-    // Get the modal
-    var modal = document.getElementById("myModal");
-    modal.style.display = "block";
-    document.getElementById("editID").value = id
-    document.getElementById("editTopic").value = topic
-    document.getElementById("editDescription").value = desc
-    console.log(topic)
-}
+// function showEditData(id, topic, desc) {
+//     // Get the modal
+//     var modal = document.getElementById("myModal");
+//     modal.style.display = "block";
+//     document.getElementById("editID").value = id
+//     document.getElementById("editTopic").value = topic
+//     document.getElementById("editDescription").value = desc
+//     console.log(topic)
+// }
 
-async function editData() {
-    var newTopic = document.getElementById("editTopic").value
-    var newDesc = document.getElementById("editDescription").value
-    var newID = document.getElementById("editID").value
-    reqBody = {
-        annnounce_id: newID,
-        topic: newTopic,
-        description: newDesc
-    };
-    let resData = await postApi("../Code/connectDB/announce/edit-announce.php", reqBody);
-    window.location.reload();
-}
+// async function editData() {
+//     var newTopic = document.getElementById("editTopic").value
+//     var newDesc = document.getElementById("editDescription").value
+//     var newID = document.getElementById("editID").value
+//     reqBody = {
+//         topic: newTopic,
+//         description: newDesc,
+//         annnounce_id: newID
+//     };
+//     let resData = await postApi("../Code/connectDB/announce/edit-announce.php", reqBody);
+//     window.location.reload();
+// }
 
 
 

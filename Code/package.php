@@ -93,27 +93,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="DetailUser.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
-                                <i class="fas fa-address-card"></i>
-                                <p>
-                                    ข้อมูลผู้อยู่อาศัย
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="complain.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
                                 <i class="fas fa-tools"></i>
                                 <p>
                                     ร้องเรียน/แจ้งซ่อม
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="package.php" class="nav-link" data-toggle="modal" data-target="#AddModal"
-                                style="background:#53a7d8;">
-                                <i class="fas fa-box-open"></i>
-                                <p>
-                                    จัดการพัสดุ
                                 </p>
                             </a>
                         </li>

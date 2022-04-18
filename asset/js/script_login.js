@@ -37,8 +37,8 @@ async function login() {
             password: document.getElementById("passwordLog").value
         };
         let resData = await postApi("../Code/connectDB/account/authenticate/login.php", reqBody);
-        console.log(resData)
-        window.open("complain.php", "_self");
+        console.log(resData.status)
+        window.open("Dashboard.php", "_self");
 
     }
 

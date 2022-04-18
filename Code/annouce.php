@@ -93,26 +93,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="DetailUser.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
-                                <i class="fas fa-address-card"></i>
-                                <p>
-                                    ข้อมูลผู้อยู่อาศัย
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="complain.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
                                 <i class="fas fa-tools"></i>
                                 <p>
                                     ร้องเรียน/แจ้งซ่อม
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="package.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
-                                <i class="fas fa-box-open"></i>
-                                <p>
-                                    จัดการพัสดุ
                                 </p>
                             </a>
                         </li>
@@ -176,10 +160,10 @@
             </div>
 
             <!-- The Modal -->
-            <div id="myModal" class="modal">
+            <!-- <div id="myModal" class="modal">
 
                 <!-- Modal content -->
-                <div class="modal-content">
+                <!-- <div class="modal-content">
                     <span class="close">&times;</span>
                     <br>
                     <div class="input-group mb-3" style="display:none;">
@@ -203,9 +187,9 @@
                         <button type="submit" class="btn btn-warning btn-block" style="width:5vw;" onclick="editData()"></a>แก้ไข <i class="fas fa-edit"></i></button>
                     </div>
 
-                </div>
+                </div> -->
 
-            </div>
+            <!-- </div> --> 
 
         </div>
 
@@ -262,7 +246,7 @@
         <script src="../plugins/toastr/toastr.min.js"></script>
         <!-- More -->
 
-        <script>
+        <!-- <script>
             var modal = document.getElementById("myModal");
             var span = document.getElementsByClassName("close")[0];
             // When the user clicks on <span> (x), close the modal
@@ -276,7 +260,7 @@
                     modal.style.display = "none";
                 }
             }
-        </script>
+        </script> -->
 
 
 

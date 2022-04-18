@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-    
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -71,8 +71,7 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-4">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
@@ -91,28 +90,12 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="DetailUser.php" class="nav-link" data-toggle="modal" data-target="#AddModal"
-                                style="background:#53a7d8;">
-                                <i class="fas fa-address-card"></i>
-                                <p>
-                                    ข้อมูลผู้อยู่อาศัย
-                                </p>
-                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="complain.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
                                 <i class="fas fa-tools"></i>
                                 <p>
                                     ร้องเรียน/แจ้งซ่อม
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="package.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
-                                <i class="fas fa-box-open"></i>
-                                <p>
-                                    จัดการพัสดุ
                                 </p>
                             </a>
                         </li>
@@ -145,19 +128,20 @@
                 <div class="container-fluid">
                     <div class="numRoomD">
                         <div class="numRoomDS1">ห้อง :</div>
-                        <div class="numRoomDS2">A2</div>
+                        <div class="numRoomDS2" id="room"></div>
                     </div>
                     <div class="textAllDetail">
                         <div class="textAllDetail1">ชื่อ :</div>
-                        <div class="textAllDetail2">ศุภชัย สมณะ</div>
+                        <div class="textAllDetail2" id="fname"></div>
+                        <div class="textAllDetail2" id="lname"></div>
                     </div>
                     <div class="textAllDetail">
                         <div class="textAllDetail1">เบอร์โทร :</div>
-                        <div class="textAllDetail2">0992434393</div>
+                        <div class="textAllDetail2" id="tel"></div>
                     </div>
                     <div class="textAllDetail">
                         <div class="textAllDetail1">Email :</div>
-                        <div class="textAllDetail2">Supachais61@nu.ac.th</div>
+                        <div class="textAllDetail2" id="email"></div>
                     </div>
                     <div class="textAllDetail" style="margin-top: 5vh;">
                         <div class="textAllDetail1">ข้อมูลค่าใช้จ่าย</div>
@@ -165,40 +149,30 @@
                             <img src="https://img.icons8.com/ios/50/000000/cash.png" />
                         </div>
                     </div>
-                    <div class="textAllDetail">
-                        <div class="textAllDetail1">สถานะ :</div>
-                        <div class="textAllDetail2">ยอดค้างชำระ</div>
+                    <br>
+                    <div class="textAllDetail" style="margin-top:1vh;">
+                        <div class="textAllDetail1">เพิ่มค่าใช้จ่าย</div>
                         <div class="textAllDetail3">
-                            <button type="submit" class="btn btn-warning btn-block" style="width:5vw;">แก้ไข <i
-                                    class="fas fa-edit"></i></button>
+                            <button type="submit" class="btn btn-warning btn-block" style="width:5vw;" onclick="GetAddBillCost()">เพิ่ม <i class="fas fa-edit"></i></button>
                         </div>
                     </div>
                     <div class="textAllDetail">
                         <div class="textAllDetail1">เดือน :</div>
-                        <div class="textAllDetail2">
-                            <div class="margin">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default">เดือน</button>
-                                    <button type="button" class="btn btn-default dropdown-toggle dropdown-icon"
-                                        data-toggle="dropdown">
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <div class="dropdown-menu" role="menu">
-                                        <a class="dropdown-item">มกราคม</a>
-                                        <a class="dropdown-item">กุมภาพันธ์</a>
-                                        <a class="dropdown-item">มีนาคม</a>
-                                        <a class="dropdown-item">เมษายน</a>
-                                        <a class="dropdown-item">พฤษพาคม</a>
-                                        <a class="dropdown-item">มิถุนายน</a>
-                                        <a class="dropdown-item">กรกฎาคม</a>
-                                        <a class="dropdown-item">สิงหาคม</a>
-                                        <a class="dropdown-item">กันยายน</a>
-                                        <a class="dropdown-item">ตุลาคม</a>
-                                        <a class="dropdown-item">พฤศจิกายน</a>
-                                        <a class="dropdown-item">ธันวาคม</a>
-                                    </div>
-                                </div>
-                            </div>
+                        <div style="margin-left:0.5vw; margin-top:1vh;">
+                            <select name="month" id="month">
+                                <option value="มกราคม" id="มกราคม">มกราคม</option>
+                                <option value="กุมภาพันธ์" id="กุมภาพันธ์">กุมภาพันธ์</option>
+                                <option value="มีนาคม" id="มีนาคม">มีนาคม</option>
+                                <option value="เมษายน" id="เมษายน">เมษายน</option>
+                                <option value="พฤษภาคม" id="พฤษภาคม">พฤษภาคม</option>
+                                <option value="มิถุนายน" id="มิถุนายน">มิถุนายน</option>
+                                <option value="กรกฎาคม" id="กรกฎาคม">กรกฎาคม</option>
+                                <option value="สิงหาคม" id="สิงหาคม">สิงหาคม</option>
+                                <option value="กันยายน" id="กันยายน">กันยายน</option>
+                                <option value="ตุลาคม" id="ตุลาคม">ตุลาคม</option>
+                                <option value="พฤศจิกายน" id="พฤศจิกายน">พฤศจิกายน</option>
+                                <option value="ธันวาคม" id="ธันวาคม">ธันวาคม</option>
+                            </select>
                         </div>
                     </div>
             </section>
@@ -215,9 +189,8 @@
                                                 <th style="text-align: center;">ค่าน้ำ <i class="fas fa-tint"></i></th>
                                                 <th style="text-align: center;">ค่าเช่าห้อง <i class="fas fa-bed"></i>
                                                 </th>
-                                                <th style="text-align: center;">รวม <i
-                                                        class="fas fa-file-invoice-dollar"></i></th>
-                                                <th style="text-align: center;">action <i class="fas fa-users-cog">
+                                                <th style="text-align: center;">รวม <i class="fas fa-file-invoice-dollar"></i></th>
+                                                <th style="text-align: center;">สถานะ <i class="fas fa-users-cog">
                                                     </i>
                                                 </th>
                                             </tr>
@@ -229,9 +202,7 @@
                                                 <td style="text-align: center;">300</td>
                                                 <td style="text-align: center;">4400</td>
                                                 <td style="text-align: center;width:13vw;">
-                                                    <button type="button" class="btn btn-block btn-warning"
-                                                        style="width:8vw; margin-left:2vw;">แก้ไขค่าใช้จ่าย <i
-                                                            class="fas fa-edit"></i></button>
+                                                    <button type="button" class="btn btn-block btn-warning" style="width:8vw; margin-left:2vw;">แก้ไขสถานะ<i class="fas fa-edit"></i></button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -249,9 +220,59 @@
             </section>
         </div>
 
+        <!-- <---The Modal --> -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <br>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="หน่วยค่าไฟที่ใช้ไป" name="elcUnit" id="elcUnit" value="">
+                </div>
+                <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
+                    <small id="errElcUnit"></small>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="ค่าไฟ" name="elcCost" id="elcCost" value="">
+                </div>
+                <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
+                    <small id="errElcCost"></small>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="ค่าน้ำ" name="waterCost" id="waterCost" value="">
+                </div>
+                <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
+                    <small id="errWaterCost"></small>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="ค่าห้อง" name="roomCost" id="roomCost" value="">
+                </div>
+                <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
+                    <small id="errRoomCost"></small>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="รวม" name="total" id="total" value="">
+                </div>
+                <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
+                    <small id="errTotal"></small>
+                </div>
+
+                <div style="margin:0 auto;">
+                    <button type="submit" class="btn btn-warning btn-block" style="width:5vw;" onclick="loadForAddCost()"></a>เพิ่ม <i class="fas fa-edit"></i></button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 
+
+    <script type="text/javascript" src="../asset/js/fetch.js"></script>
+    <script type="text/javascript" src="../asset/js/script_showData.js"></script>
 
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
@@ -274,6 +295,22 @@
     <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+    <script>
+        var modal = document.getElementById("myModal");
+        var span = document.getElementsByClassName("close")[0];
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 

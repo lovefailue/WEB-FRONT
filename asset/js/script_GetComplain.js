@@ -18,9 +18,9 @@ function showDataComplain(data) {
                     <span class="info-box-icon bg-info" style="height:10vh;"> <i class="fas fa-tools"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text" style="height:3vh; font-size:25px;">ห้อง : ${data[i].room}</span>
-                            <span class="info-box-text">เรื่อง : ${data[i].topic}</span>
-                            <span class="info-box-text">เนื้อหา : ${data[i].description}</span>
-                            <span class="info-box-number">วันที่ : ${data[i].date}</span>
+                            <span class="info-box-text">เรื่อง: ${data[i].topic}</span>
+                            <span class="info-box-text">เนื้อหา: ${data[i].description}</span>
+                            <span class="info-box-number">วันที่: ${data[i].date}</span>
                         </div>
                         <div class="colum" style="margin-top:1.5vh">
                             <button type=" submit" class="btn btn-success btn-block" style="width:5vw; margin-top:1.5vh;" id="editStatus" onclick="editStatusCom('${data[i].date}')">
@@ -35,9 +35,9 @@ function showDataComplain(data) {
                     <span class="info-box-icon bg-info" style="height:10vh;"> <i class="fas fa-tools"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text" style="height:3vh; font-size:25px;">ห้อง : ${data[i].room}</span>
-                            <span class="info-box-text">เรื่อง : ${data[i].topic}</span>
-                            <span class="info-box-text">เนื้อหา : ${data[i].description}</span>
-                            <span class="info-box-number">วันที่ : ${data[i].date}</span>
+                            <span class="info-box-text">เรื่อง: ${data[i].topic}</span>
+                            <span class="info-box-text">เนื้อหา: ${data[i].description}</span>
+                            <span class="info-box-number">วันที่: ${data[i].date}</span>
                         </div>
                         <div class="colum" style="margin-top:1.5vh">
                             <button type=" submit" class="btn btn-success btn-block" style="width:7vw; margin-top:1.5vh;" id="editStatus" onclick="editStatusCom('${data[i].date}')">

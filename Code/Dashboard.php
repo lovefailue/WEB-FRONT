@@ -94,26 +94,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="DetailUser.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
-                                <i class="fas fa-address-card"></i>
-                                <p>
-                                    ข้อมูลผู้อยู่อาศัย
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="complain.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
                                 <i class="fas fa-tools"></i>
                                 <p>
                                     ร้องเรียน/แจ้งซ่อม
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="package.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
-                                <i class="fas fa-box-open"></i>
-                                <p>
-                                    จัดการพัสดุ
                                 </p>
                             </a>
                         </li>
@@ -150,7 +134,7 @@
             <section class="content" style="width: 70%; margin-left: 12vw; margin-top: 1vh;">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12" >
+                        <div class="col-12">
                             <div class="card">
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -160,9 +144,11 @@
                                                 <th style="text-align: center">เลขที่ห้องพัก</th>
                                                 <th style="text-align: center">ข้อมูลผู้เข้าพัก</th>
                                                 <th style="text-align: center">จัดการพัสดุ</th>
+                                                <th style="text-align: center">ลบข้อมูลผู้เข้าพัก</th>
                                             </tr>
                                         </thead>
                                         <tbody id="table_dasboard">
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -171,6 +157,20 @@
                     </div>
                 </div>
             </section>
+        </div>
+
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div style="text-align: center;">
+                    <h2>จะลบจริงอ่อ</h2>
+                </div>
+                <br>
+                <div style="margin:0 auto;">
+                    <button type="submit" class="btn btn-warning btn-block" style="width:5vw;" id="confirmDelete"></a>ตกลง <i class="fas fa-edit"></i></button>
+                </div>
+            </div>
         </div>
 
 
@@ -202,7 +202,7 @@
         <script src="../dist/js/demo.js"></script>
         <!-- SweetAlert2 -->
         <script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
-        <script>
+        <!-- <script>
             $(function() {
                 $('#example2').DataTable({
                     "paging": true,
@@ -215,22 +215,21 @@
                     "pageLength": 10
                 });
             });
-        </script>
+        </script> -->
         <script>
-            $(function() {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000
-                });
-                $(document).ready(function() {
-                    Toast.fire({
-                        icon: 'success',
-                        title: ' ยินดีต้อนรับ Admin'
-                    })
-                });
-            });
+            var modal = document.getElementById("myModal");
+            var span = document.getElementsByClassName("close")[0];
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
         </script>
 </body>
 
