@@ -36,6 +36,8 @@
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <link rel="shortcut icon" href="#">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -160,20 +162,13 @@
                                                 <th style="text-align: center;">ลบพัสดุ</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="table_post">
-
-                                        </tbody>
+                                        <tbody id="table_post"></tbody>
                                     </table>
                                 </div>
-                                <!-- /.card-body -->
                             </div>
-                            <!-- /.card -->
                         </div>
-                        <!-- /.col -->
                     </div>
-                    <!-- /.row -->
                 </div>
-                <!-- /.container-fluid -->
             </section>
         </div>
 
@@ -222,22 +217,18 @@
         <script src="../dist/js/demo.js"></script>
         <!-- Page specific script -->
         <script>
-            $(function() {
-                $("#example1").DataTable({
-                    "responsive": true,
-                    "lengthChange": false,
-                    "autoWidth": true,
-                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-                $('#example2').DataTable({
+            $(document).ready(function() {
+                setTimeout(()=>{
+                    $('#example2').DataTable({
                     "paging": true,
                     "lengthChange": false,
                     "searching": false,
                     "ordering": true,
-                    "info": true,
+                    "info": false,
                     "autoWidth": true,
                     "responsive": true,
                 });
+                }, 100);
             });
         </script>
 

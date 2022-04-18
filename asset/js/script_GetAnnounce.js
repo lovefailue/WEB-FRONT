@@ -23,7 +23,7 @@ function showData(data) {
                         <span class="info-box-number">วันที่: ${data[i].date}</span>
                     </div>
                     <div class="colum">
-                        <button type="submit" class="btn btn-danger btn-block" style="width:5vw;" onclick="deleteData('${data[i].announce_id}')"></a>ลบ <i class="fas fa-trash-alt"></i></button>
+                        <button type="submit" class="btn btn-danger btn-block" style="width:5vw; margin-top:2vh;" onclick="deleteData('${data[i].announce_id}')"></a>ลบ <i class="fas fa-trash-alt"></i></button>
                     </div>
                 <!-- /.info-box-content -->
             </div>

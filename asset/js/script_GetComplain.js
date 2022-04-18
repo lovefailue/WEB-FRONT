@@ -40,7 +40,7 @@ function showDataComplain(data) {
                             <span class="info-box-number">วันที่: ${data[i].date}</span>
                         </div>
                         <div class="colum" style="margin-top:1.5vh">
-                            <button type=" submit" class="btn btn-success btn-block" style="width:7vw; margin-top:1.5vh;" id="editStatus" onclick="editStatusCom('${data[i].date}')">
+                            <button type=" submit" class="btn btn-success btn-block" style="width:7vw; margin-top:1.5vh;" id="editStatus">
                             </a>รับเรื่องแล้ว</button>
                         </div>
                     <!-- /.info-box-content -->
