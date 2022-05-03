@@ -102,6 +102,22 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="banking.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
+                                <i class="far fa-credit-card"></i>
+                                <p>
+                                    บัญชีธนาคาร
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="receipt.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
+                                <i class="fas fa-clipboard-list"></i>
+                                <p>
+                                    สลิปจ่ายเงิน
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="Register.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
                                 <i class="fas fa-user-plus"></i>
                                 <p>
@@ -158,7 +174,7 @@
                             <button type="submit" class="btn btn-warning btn-block" style="width:5vw;" onclick="GetAddBillCost()">เพิ่ม <i class="fas fa-edit"></i></button>
                         </div>
                     </div>
-                    <div class="textAllDetail">
+                    <!-- <div class="textAllDetail">
                         <div class="textAllDetail1">เดือน :</div>
                         <div style="margin-left:0.5vw; margin-top:1vh;">
                             <select name="month" id="month">
@@ -176,14 +192,39 @@
                                 <option value="ธันวาคม" id="ธันวาคม">ธันวาคม</option>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
             </section>
+
             <section class="content" style="width: 70%; margin-left: 13vw; margin-top:5vh; ">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
+                                    <div style="display:flex; flex-direction: row;">
+                                        <div class="input-group mb-3" style="width:5%;">
+                                            <select name="getMonth" id="getMonth">
+                                                <option value="มกราคม">มกราคม</option>
+                                                <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+                                                <option value="มีนาคม">มีนาคม</option>
+                                                <option value="เมษายน">เมษายน</option>
+                                                <option value="พฤษภาคม">พฤษภาคม</option>
+                                                <option value="มิถุนายน">มิถุนายน</option>
+                                                <option value="กรกฎาคม">กรกฎาคม</option>
+                                                <option value="สิงหาคม">สิงหาคม</option>
+                                                <option value="กันยายน">กันยายน</option>
+                                                <option value="ตุลาคม">ตุลาคม</option>
+                                                <option value="พฤศจิกายน">พฤศจิกายน</option>
+                                                <option value="ธันวาคม">ธันวาคม</option>
+                                            </select>
+                                        </div>
+                                        <div style="margin-top:-0.6vh; margin-left:4vw;">
+                                            <button type="submit" class="btn btn-primary btn-block" onclick="loadBillCost()">ยืนยัน</button>
+                                        </div>
+                                        <!-- <div class=" container" style="width:4.5vw; ">
+                                            
+                                        </div> -->
+                                    </div>
                                     <table id="example1" class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
@@ -197,16 +238,8 @@
                                                 </th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td style="text-align: center;">1200</td>
-                                                <td style="text-align: center;">200</td>
-                                                <td style="text-align: center;">300</td>
-                                                <td style="text-align: center;">4400</td>
-                                                <td style="text-align: center;width:13vw;">
-                                                    <button type="button" class="btn btn-block btn-warning" style="width:8vw; margin-left:2vw;">แก้ไขสถานะ<i class="fas fa-edit"></i></button>
-                                                </td>
-                                            </tr>
+                                        <tbody id="box_billCost">
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -229,6 +262,22 @@
                 <span class="close">&times;</span>
                 <br>
                 <div class="input-group mb-3">
+                    <select name="addMonth" id="addMonth">
+                        <option value="มกราคม">มกราคม</option>
+                        <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+                        <option value="มีนาคม">มีนาคม</option>
+                        <option value="เมษายน">เมษายน</option>
+                        <option value="พฤษภาคม">พฤษภาคม</option>
+                        <option value="มิถุนายน">มิถุนายน</option>
+                        <option value="กรกฎาคม">กรกฎาคม</option>
+                        <option value="สิงหาคม">สิงหาคม</option>
+                        <option value="กันยายน">กันยายน</option>
+                        <option value="ตุลาคม">ตุลาคม</option>
+                        <option value="พฤศจิกายน">พฤศจิกายน</option>
+                        <option value="ธันวาคม">ธันวาคม</option>
+                    </select>
+                </div>
+                <div class="input-group mb-3" style="margin-top: 1vh;">
                     <input type="text" class="form-control" placeholder="หน่วยค่าไฟที่ใช้ไป" name="elcUnit" id="elcUnit" value="">
                 </div>
                 <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
@@ -272,9 +321,9 @@
     </div>
 
 
-
+    <script type="text/javascript" src="../asset/js/script_global.js?version===1.0.3"></script>
     <script type="text/javascript" src="../asset/js/fetch.js"></script>
-    <script type="text/javascript" src="../asset/js/script_showData.js"></script>
+    <script type="text/javascript" src="../asset/js/script_showData.js?version===1.0.3"></script>
 
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>

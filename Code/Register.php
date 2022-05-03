@@ -30,11 +30,11 @@
             <div class="card-body register-card-body" style="background: linear-gradient( #FF8AAE,#FFB2A6);">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="First Name" name="fname" id="fname">
-                    <div class="input-group-append">
+                    <!-- <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
                     <small id="errFname"></small>
@@ -42,77 +42,77 @@
 
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Last Name" name="lname" id="lname">
-                    <div class="input-group-append">
+                    <!-- <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
                     <small id="errLname"></small>
                 </div>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Room" name="room" id="room">
-                    <div class="input-group-append">
+                    <!-- <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
                     <small id="errRoom"></small>
                 </div>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Telephone Number" name="tel" id="tel">
-                    <div class="input-group-append">
+                    <!-- <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
                     <small id="errTel"></small>
                 </div>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Email" name="email" id="email">
-                    <div class="input-group-append">
+                    <!-- <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
                     <small id="errEmail"></small>
                 </div>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Username" name="username" id="username">
-                    <div class="input-group-append">
+                    <!-- <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
                     <small id="errUser"></small>
                 </div>
                 <div class="input-group mb-3">
                     <input type="password" class="form-control" placeholder="Password" name="password" id="password">
-                    <div class="input-group-append">
+                    <!-- <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
                     <small id="errPass"></small>
                 </div>
                 <div class="input-group mb-3">
                     <input type="password" class="form-control" placeholder="Confirm Password" name="c_password" id="c_password">
-                    <div class="input-group-append">
+                    <!-- <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
                     <small id="errCPass"></small>
@@ -133,9 +133,9 @@
     </div><!-- /.card -->
     </div>
 
-
+    <script type="text/javascript" src="../asset/js/script_global.js?version===1.0.3"></script>
     <script type="text/javascript" src="../asset/js/fetch.js"></script>
-    <script type="text/javascript" src="../asset/js/script_regis.js"></script>
+    <script type="text/javascript" src="../asset/js/script_regis.js?version===1.0.3"></script>
 
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>

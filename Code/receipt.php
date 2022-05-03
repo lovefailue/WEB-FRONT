@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>ร้องเรียน/แจ้งซ่อม</title>
+    <title>จัดการพัสดุ</title>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="author" content="Athipong Kaehom" />
@@ -28,6 +28,7 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="../asset/css/style.css">
@@ -41,6 +42,7 @@
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
+        <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
@@ -52,6 +54,7 @@
         <div class="logo">
             <img class="logo" src="../asset/logo/logo2.png" height="150" width="150">
         </div>
+        <!-- /.navbar -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Sidebar -->
             <div class="sidebar">
@@ -87,7 +90,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="complain.php" class="nav-link" data-toggle="modal" data-target="#AddModal" style="background:#53a7d8;">
+                            <a href="complain.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
                                 <i class="fas fa-tools"></i>
                                 <p>
                                     ร้องเรียน/แจ้งซ่อม
@@ -132,109 +135,118 @@
             </div>
             <!-- /.sidebar -->
         </aside>
+
+
+
         <div class="content-wrapper" style="background-color: #88cdf6;">
-            <div class="histr" style="margin-left:20vw">
-                <h1>เรื่องแจ้งซ่อม/ร้องเรียน <i class="fas fa-tools"></i></h1>
-                <div class="row" style="margin-top:2vh;">
-                    <div class="col-md-9 col-sm-6 col-10" id="box_complain">
-                        
-                        <!-- /.info-box -->
+            <!-- Content Header (Page header) -->
+            <section class=" content-header">
+                <div class="container-fluid">
+
+                </div>
+            </section>
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="text1_1"><i class="fas fa-clipboard-list"></i> ตรวจสอบการจ่ายค่าเช้าหอพัก </div>
+                </div>
+            </section>
+
+
+            <section class="content" style="width: 70%; margin-left: 12vw; ">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="example2" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align: center">เลขที่ห้องพัก</th>
+                                                <th style="text-align: center">ค่าใช้จ่ายของเดือน</th>
+                                                <th style="text-align: center">เวลาจ่ายบิล</th>
+                                                <th style="text-align: center">ดูสลิปโอนเงิน</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table_receipt"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </section>
+        </div>
+
+
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="showImg">
+                    <img src="" alt="" id="infoReceipt" style="width:100%; height:100%;">
                 </div>
             </div>
         </div>
 
+    </div>
 
+    <script type="text/javascript" src="../asset/js/script_global.js?version===1.0.3"></script>
+    <script type="text/javascript" src="../asset/js/fetch.js"></script>
+    <script type="text/javascript" src="../asset/js/script_receipt.js?version===1.0.3"></script>
 
+    <!-- jQuery -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="../plugins/jszip/jszip.min.js"></script>
+    <script src="../plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="../plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
+    <!-- Page specific script -->
+    <script>
+        $(document).ready(function() {
+            setTimeout(() => {
+                $('#example2').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": false,
+                    "autoWidth": true,
+                    "responsive": true,
+                });
+            }, 100);
+        });
+    </script>
 
+    <script>
+        var modal = document.getElementById("myModal");
+        var span = document.getElementsByClassName("close")[0];
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
 
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <script type="text/javascript" src="../asset/js/script_global.js?version===1.0.3"></script>
-        <script type="text/javascript" src="../asset/js/fetch.js"></script>
-        <script type="text/javascript" src="../asset/js/script_GetComplain.js?version===1.0.3"></script>
-
-
-        <!-- jQuery -->
-        <script src="../plugins/jquery/jquery.min.js"></script>
-        <!-- jQuery UI 1.11.4 -->
-        <script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
-        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-        <script>
-            $.widget.bridge('uibutton', $.ui.button)
-        </script>
-        <!-- ChartJS -->
-        <script src="../plugins/chart.js/Chart.min.js"></script>
-        <!-- Sparkline -->
-        <script src="../plugins/sparklines/sparkline.js"></script>
-        <!-- daterangepicker -->
-        <script src="../plugins/moment/moment.min.js"></script>
-        <script src="../plugins/daterangepicker/daterangepicker.js"></script>
-        <!-- Tempusdominus Bootstrap 4 -->
-        <script src="../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-        <!-- Summernote -->
-        <script src="../plugins/summernote/summernote-bs4.min.js"></script>
-        <!-- overlayScrollbars -->
-        <script src="../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="../dist/js/adminlte.js"></script>
-        <!-- DataTables -->
-        <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-        <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-        <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-        <!-- SweetAlert2 -->
-        <script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
-        <!-- Toastr -->
-        <script src="../plugins/toastr/toastr.min.js"></script>
 
 </body>
 

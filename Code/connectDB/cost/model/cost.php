@@ -24,7 +24,7 @@
         }
         function AddCost($inpData){
             $cost_id = $this->uuidv4();
-            $query = "INSERT INTO `billcost` (`cost_id`,`room`,`elc_cost`,`water_cost`,`room_cost`,`date_cost`,`elc_unit`,`total`,`status`) VALUES (:cost_id,:room,:elc_cost,:water_cost,:room_cost,NOW(),:elc_unit,:total,:status);";
+            $query = "INSERT INTO `billcost` (`cost_id`,`room`,`elc_cost`,`water_cost`,`room_cost`,`date_cost`,`elc_unit`,`total`,`status`,`mount_cost`) VALUES (:cost_id,:room,:elc_cost,:water_cost,:room_cost,NOW(),:elc_unit,:total,'ค้างชำระ',:mount_cost);";
             try{
                 $stmt1 = $this->conn->prepare($query);
                 $stmt1->bindParam(":cost_id",$cost_id,PDO::PARAM_STR);
@@ -34,7 +34,7 @@
                 $stmt1->bindParam(":room_cost",$inpData['room_cost'],PDO::PARAM_STR);
                 $stmt1->bindParam(":elc_unit",$inpData['elc_unit'],PDO::PARAM_STR);
                 $stmt1->bindParam(":total",$inpData['total'],PDO::PARAM_STR);
-                $stmt1->bindParam(":status",$inpData['status'],PDO::PARAM_STR);
+                $stmt1->bindParam(":mount_cost",$inpData['mount_cost'],PDO::PARAM_STR);
                 $stmt1->execute();
 
                 return array("status"=>"success","msg"=>"add billcost successfully");
@@ -120,9 +120,15 @@
                 
                 while ($row=$stmt1->fetch()){
                     $el = array(
-                        "cost_id"       =>$row['cost_id'],
+                        "cost_id"       =>$row["cost_id"],
                         "date_cost"     =>$row['date_cost'],
                         "room"          =>$row['room'],
+                        "elc_cost"      =>$row['elc_cost'],
+                        "water_cost"    =>$row['water_cost'],
+                        "room_cost"     =>$row['room_cost'],
+                        "elc_unit"      =>$row['elc_unit'],
+                        "total"         =>$row['total'],
+                        "mount_cost"    =>$row['mount_cost'],
                         "status"        =>$row['status']
                     );
                     array_push($data,$el);
@@ -140,31 +146,143 @@
                $stmt1->bindParam(":cost_id",$cost_id,PDO::PARAM_STR);
                $stmt1->execute();
                $data = array();
-               $row=$stmt1->fetch();
-               if($row==null){
-                   return array("status"=>"fail","msg"=>"-");
-               }else{
-                   while ($row=$stmt1->fetch()){
-                        $el = array(
-                            "cost_id"       =>$row["cost_id"],
-                            "date_cost"     =>$row['date_cost'],
-                            "room"          =>$row['room'],
-                            "elc_cost"      =>$row['elc_cost'],
-                            "water_cost"    =>$row['water_cost'],
-                            "room_cost"     =>$row['room_cost'],
-                            "elc_unit"      =>$row['elc_unit'],
-                            "total"         =>$row['total'],
-                            "status"        =>$row['status']
-                            
-                        );
-                        array_push($data,$el);
-                   }
-                   return array("status"=>"success","msg"=>"-","data"=>$data);
-               }
+               
+                while ($row=$stmt1->fetch()){
+                    $el = array(
+                        "cost_id"       =>$row["cost_id"],
+                        "date_cost"     =>$row['date_cost'],
+                        "room"          =>$row['room'],
+                        "elc_cost"      =>$row['elc_cost'],
+                        "water_cost"    =>$row['water_cost'],
+                        "room_cost"     =>$row['room_cost'],
+                        "elc_unit"      =>$row['elc_unit'],
+                        "total"         =>$row['total'],
+                        "status"        =>$row['status']
+                    );
+                    array_push($data,$el);
+                }
+                return array("status"=>"success","msg"=>"-","data"=>$data);
+            
                
             }catch(PDOException $e){
                 return array("status"=>"error","msg"=>$e->getMessage());
            }
+        }
+        function AddReceiptCost($inpData){
+            $query = "INSERT INTO `receipt_cost` (`cost_id`,`account_id`,`receipt_img`,`receipt_date`,`room`,`receipt_mount`) VALUES (:cost_id,:account_id,:receipt_img,NOW(),:room,:receipt_mount);";
+            try{
+                $stmt1 = $this->conn->prepare($query);
+                $stmt1->bindParam(":cost_id",$inpData['cost_id'],PDO::PARAM_STR);
+                $stmt1->bindParam(":account_id",$inpData['account_id'],PDO::PARAM_STR);
+                $stmt1->bindParam(":receipt_img",$inpData['receipt_img'],PDO::PARAM_STR);
+                $stmt1->bindParam(":room",$inpData['room'],PDO::PARAM_STR);
+                $stmt1->bindParam(":receipt_mount",$inpData['receipt_mount'],PDO::PARAM_STR);
+                
+                $stmt1->execute();
+                
+                return array("status"=>"success","msg"=>"add reciptcost successfully");
+            }catch(PDOException $e){
+                return array("status"=>"error","msg"=>$e->getMessage());
+            }
+        }
+        function GetReceiptCost(){
+            $query = "SELECT * FROM `receipt_cost`";
+            try{
+                $stmt1 = $this->conn->prepare($query);
+                $stmt1->execute();
+                $data = array();
+               
+                while ($row=$stmt1->fetch()){
+                    $el = array(
+                        "receipt_id"        =>$row["receipt_id"],
+                        "cost_id"           =>$row["cost_id"],
+                        "account_id"        =>$row["account_id"],
+                        "receipt_date"      =>$row["receipt_date"],
+                        "room"              =>$row["room"],
+                        "receipt_mount"     =>$row["receipt_mount"]
+                    
+                    );
+                    array_push($data,$el);
+                }
+                return array("status"=>"success","msg"=>"get reciptcost successfully","data"=>$data);
+            }catch(PDOException $e){
+                return array("status"=>"error","msg"=>$e->getMessage());
+            }
+        }
+        function GetInfoReceiptCost($receipt_id){
+            $query = "SELECT * FROM `receipt_cost` WHERE `receipt_id`=:receipt_id";
+            try{
+                $stmt1 = $this->conn->prepare($query);
+                $stmt1->bindParam(":receipt_id",$receipt_id,PDO::PARAM_STR);
+                $stmt1->execute();
+                $row=$stmt1->fetch();
+                
+                $data = array(
+                    "receipt_img"     =>$row["receipt_img"]
+                );
+
+                return array("status"=>"success","msg"=>"get reciptcost successfully","data"=>$data);
+            }catch(PDOException $e){
+                return array("status"=>"error","msg"=>$e->getMessage());
+            }
+        }
+        function SelectMountCost($room,$mount_cost){
+            $query = "SELECT * FROM `billcost` WHERE `room`=:room AND `mount_cost`=:mount_cost";
+            try{
+                $stmt1 = $this->conn->prepare($query);
+                $stmt1->bindParam(":room",$room,PDO::PARAM_STR);
+                $stmt1->bindParam(":mount_cost",$mount_cost,PDO::PARAM_STR);
+                $stmt1->execute();
+                $data = array();
+               
+                while ($row=$stmt1->fetch()){
+                    $el = array(
+                        "cost_id"       =>$row["cost_id"],
+                        "room"          =>$row['room'],
+                        "total"         =>$row['total'],
+                        "mount_cost"    =>$row['mount_cost'],
+                        "status"        =>$row['status']
+                    );
+                    array_push($data,$el);
+                }
+                return array("status"=>"success","msg"=>"get bill cost successfully","data"=>$data);
+            }catch(PDOException $e){
+                return array("status"=>"error","msg"=>$e->getMessage());
+            }
+        }
+        function AddBanking($inpData){
+            $query = "INSERT INTO `banking` (`bank`,`number_banking`,`name_banking`) VALUES (:bank,:number_banking,:name_banking);";
+            try{
+                $stmt1 = $this->conn->prepare($query);
+                $stmt1->bindParam(":bank",$inpData['bank'],PDO::PARAM_STR);
+                $stmt1->bindParam(":number_banking",$inpData['number_banking'],PDO::PARAM_STR);
+                $stmt1->bindParam(":name_banking",$inpData['name_banking'],PDO::PARAM_STR);
+                $stmt1->execute();
+
+                return array("status"=>"success","msg"=>"get bill cost successfully");
+            }catch(PDOException $e){
+                return array("status"=>"error","msg"=>$e->getMessage());
+            }
+        }
+        function GetBanking(){
+            $query = "SELECT * FROM `banking`";
+            try{
+                $stmt1 = $this->conn->prepare($query);
+                $stmt1->execute();
+                $data = array();
+                while ($row=$stmt1->fetch()){
+                    $el = array(
+                        "bank"               =>$row["bank"],
+                        "number_banking"     =>$row["number_banking"],
+                        "name_banking"       =>$row["name_banking"]
+                    );
+                    array_push($data,$el);
+                }
+
+                return array("status"=>"success","msg"=>"get banking successfully","data"=>$data);
+            }catch(PDOException $e){
+                return array("status"=>"error","msg"=>$e->getMessage());
+            }
         } 
     }
 ?>

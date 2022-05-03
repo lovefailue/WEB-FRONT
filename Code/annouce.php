@@ -49,14 +49,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
-            <ul class="navbar-nav ml-auto">
-                <a type="button" class="btn btn-block btn-outline-danger" href="../logout.php">
-                    <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
-
-                </a>
-            </ul>
         </nav>
-
         <div class="logo">
             <img class="logo" src="../asset/logo/logo2.png" height="150" width="150">
         </div>
@@ -69,7 +62,7 @@
                         <img src="../asset/images/Admin.png">
                     </div>
                     <div class="info">
-                        <a class="font-weight:lighter"><b style="color:#fff">Wellcome Admin</b></a>
+                        <a class="font-weight:lighter"><b>Wellcome Admin</b></a>
 
                     </div>
                 </div>
@@ -99,6 +92,22 @@
                                 <i class="fas fa-tools"></i>
                                 <p>
                                     ร้องเรียน/แจ้งซ่อม
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="banking.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
+                                <i class="far fa-credit-card"></i>
+                                <p>
+                                    บัญชีธนาคาร
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="receipt.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
+                                <i class="fas fa-clipboard-list"></i>
+                                <p>
+                                    สลิปจ่ายเงิน
                                 </p>
                             </a>
                         </li>
@@ -211,10 +220,10 @@
 
 
 
-
+        <script type="text/javascript" src="../asset/js/script_global.js?version===1.0.3"></script>
         <script type="text/javascript" src="../asset/js/fetch.js"></script>
-        <script type="text/javascript" src="../asset/js/script_add-announce.js"></script>
-        <script type="text/javascript" src="../asset/js/script_GetAnnounce.js"></script>
+        <script type="text/javascript" src="../asset/js/script_add-announce.js?version===1.0.3""></script>
+        <script type="text/javascript" src="../asset/js/script_GetAnnounce.js?version===1.0.3"></script>
 
 
         <!-- jQuery -->

@@ -39,8 +39,6 @@
     <link rel="shortcut icon" href="#">
 </head>
 
-
-
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
@@ -50,12 +48,6 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <a type="button" class="btn btn-block btn-outline-danger" href="../logout.php">
-                    <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
-
-                </a>
             </ul>
         </nav>
         <div class="logo">
@@ -104,6 +96,22 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="banking.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
+                                <i class="far fa-credit-card"></i>
+                                <p>
+                                    บัญชีธนาคาร
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="receipt.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
+                                <i class="fas fa-clipboard-list"></i>
+                                <p>
+                                    สลิปจ่ายเงิน
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="Register.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
                                 <i class="fas fa-user-plus"></i>
                                 <p>
@@ -112,7 +120,7 @@
                             </a>
                         </li>
                         <li class="nav-item" style="background-color: #FF6464; border-radius: 8px; ">
-                            <a href="login.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
+                            <a onclick="logout()" class="nav-link" data-toggle="modal" data-target="#AddModal">
                                 <i class="fas fa-sign-out-alt" style="color: #000000;"></i>
                                 <p style="color: #000000;">
                                     ออกจากระบบ
@@ -146,6 +154,7 @@
                                                 <th style="text-align: center">เลขที่ห้องพัก</th>
                                                 <th style="text-align: center">ข้อมูลผู้เข้าพัก</th>
                                                 <th style="text-align: center">จัดการพัสดุ</th>
+                                                <th style="text-align: center">แก้ไขUsername และpassword</th>
                                                 <th style="text-align: center">ลบข้อมูลผู้เข้าพัก</th>
                                             </tr>
                                         </thead>
@@ -175,10 +184,51 @@
             </div>
         </div>
 
+        <div id="myModalEditPass" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="input-group mb-3" style="display:none;">
+                    <input type="text" class="form-control" placeholder="ID" name="ID" id="ID" value="">
+                </div>
+                <p>Username</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="username" name="username" id="username" value="">
+                </div>
+                <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
+                    <small id="errUser"></small>
+                </div>
+                <br>
+
+                <p>Password ใหม่</p>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="Password ใหม่" name="newPass" id="newPass" value="">
+                </div>
+                <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
+                    <small id="errNewPass"></small>
+                </div>
+                <br>
+
+                <p>ใส่ Password อีกครั้ง</p>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="ใส่ Password อีกครั้ง" name="c_NewPass" id="c_NewPass" value="">
+                </div>
+                <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
+                    <small id="errCNewPass"></small>
+                </div>
+
+                <br>
+                <div style="margin:0 auto;">
+                    <button type="submit" class="btn btn-warning btn-block" style="width:5vw;" onclick="editPass()"></a>ตกลง <i class="fas fa-edit"></i></button>
+                </div>
+            </div>
+        </div>
 
 
+        <script type="text/javascript" src="../asset/js/script_global.js?version===1.0.3"></script>
         <script type="text/javascript" src="../asset/js/fetch.js"></script>
-        <script type="text/javascript" src="../asset/js/script_showDashboard.js"></script>
+        <script type="text/javascript" src="../asset/js/script_showDashboard.js?version===1.0.3"></script>
+
 
 
 
@@ -230,6 +280,22 @@
             window.onclick = function(event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
+                }
+            }
+        </script>
+
+        <script>
+            var modalEditPass = document.getElementById("myModalEditPass");
+            var span = document.getElementsByClassName("close")[1];
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modalEditPass.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modalEditPass) {
+                    modalEditPass.style.display = "none";
                 }
             }
         </script>

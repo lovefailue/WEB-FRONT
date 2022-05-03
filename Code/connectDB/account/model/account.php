@@ -140,6 +140,7 @@
             // $query = "SELECT * FROM `account` WHERE `account_id`=:account_id AND `token`=:token;";
             $query2 = "UPDATE `account` SET `token`=:token WHERE `account_id`=:account_id;";
             try{
+                $stmt2 = $this->conn->prepare($query2);
                 $stmt2->bindParam(":account_id",$inpData['account_id'],PDO::PARAM_STR);
                 $stmt2->bindParam(":token",$tokenNew,PDO::PARAM_STR);
                 $stmt2->execute();

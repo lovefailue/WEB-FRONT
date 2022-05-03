@@ -29,15 +29,21 @@ function checkPasswordLog() {
 async function login() {
 
     if (!checkUsernameLog() || !checkPasswordLog()) {
-        checkUsernameLog(),
+        checkUsernameLog()
         checkPasswordLog()
+        // console.log("fail")
+        localStorage.setItem("status_login", "fail");
+        console.log(localStorage.getItem("status_login"));
     } else {
         let reqBody = {
             username: document.getElementById("usernameLog").value,
             password: document.getElementById("passwordLog").value
         };
         let resData = await postApi("../Code/connectDB/account/authenticate/login.php", reqBody);
-        console.log(resData.status)
+        console.log(resData)
+        // console.log("successe")
+        localStorage.setItem("status_login", "loggedin");
+        console.log(localStorage.getItem("status_login"));
         window.open("Dashboard.php", "_self");
 
     }

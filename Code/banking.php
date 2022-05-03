@@ -142,46 +142,38 @@
             <!-- Content Header (Page header) -->
             <section class=" content-header">
                 <div class="container-fluid">
-                    <div class="numRoomP">
-                        <div class="numRoomPS1">ห้อง :</div>
-                        <div class="numRoomPS2" id="room"></div>
-                    </div>
-                    <div class="text2_1">เพิ่มพัสดุ</div>
 
-                    <div class="AddPackage">
-                        <div class="APKF">เลขพัสดุ :</div>
-                        <div class="APKS">
-                            <input type="addpackage" placeholder="เลขพัสดุ" style="width: 17vw" id="NumPost"></input>
-                        </div>
-                        <div class="APKBtt">
-                            <button type="button" class="btn btn-block btn-success" onclick="addPostLoad()">เพิ่ม <i class="fas fa-plus-circle"></i></button>
-                        </div>
-                    </div>
+                </div>
+            </section>
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="text1_1"><i class="far fa-credit-card"></i> บัญชีธนาคาร </div>
                 </div>
             </section>
 
 
-            
             <section class="content" style="width: 70%; margin-left: 12vw; ">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <!-- /.card-header -->
-                                <div class="card-header">
-                                    <h3 class="card-title">ตรวจสอบพัสดุ</h3>
+                                <div style="display:flex; flex-direction:row;">
+                                    <h4 style="margin-top:1vh; margin-left:1vw;">เพิ่มบัญชี</h4>
+                                    <button type="submit" class="btn btn-primary" style="width:4vw; height:4vh; margin-top:0.5vh; margin-left:1.5vw;" onclick="showDropDownBanking()"></a>เพิ่ม</button>
                                 </div>
+                                
+                                <!-- /.card-header -->
                                 <div class="card-body">
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th style="text-align: center;">เลชพัสดุ</th>
-                                                <th style="text-align: center;">วันที่</th>
-                                                <th style="text-align: center;">สถานะ</th>
-                                                <th style="text-align: center;">ลบพัสดุ</th>
+                                                <th style="text-align: center">ธนาคาร</th>
+                                                <th style="text-align: center">ชื่อบัญชี</th>
+                                                <th style="text-align: center">เลขบัญชี</th>
+                                                <th style="text-align: center">ลบบัญชี</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="table_post"></tbody>
+                                        <tbody id="table_banking"></tbody>
                                     </table>
                                 </div>
                             </div>
@@ -191,54 +183,80 @@
             </section>
         </div>
 
+
         <div id="myModal" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <div style="text-align: center;">
-                    <h2>จะลบจริงอ่อ</h2>
-                </div>
                 <br>
+                <div class="input-group mb-3">
+                    <select name="banking" id="banking">
+                        <option value="กรุงเทพ">กรุงเทพ</option>
+                        <option value="กรุงไทย">กรุงไทย</option>
+                        <option value="กรุงศรีอยุธยา">กรุงศรีอยุธยา</option>
+                        <option value="กสิกรไทย">กสิกรไทย</option>
+                        <option value="เกียรตินาคิน">เกียรตินาคิน</option>
+                        <option value="ซิตี้แบงก์">ซิตี้แบงก์</option>
+                        <option value="ซีไอเอ็มบี ไทย">ซีไอเอ็มบี ไทย</option>
+                        <option value="ทหารไทย">ทหารไทย</option>
+                        <option value="ทิสโก้">ทิสโก้</option>
+                        <option value="ไทยพาณิชย์">ไทยพาณิชย์</option>
+                        <option value="ธ.ก.ส.">ธ.ก.ส.</option>
+                        <option value="ธนชาต">ธนชาต</option>
+                        <option value="ยูโอบี">ยูโอบี</option>
+                        <option value="ออมสิน">ออมสิน</option>
+                        <option value="ไอซีบีซี ไทย">ไอซีบีซี ไทย</option>
+                    </select>
+                </div>
+                <div class="input-group mb-3" style="margin-top: 1vh;">
+                    <input type="text" class="form-control" placeholder="ชื่อบัญชี" name="nameBanking" id="nameBanking" value="">
+                </div>
+                <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
+                    <small id="errNameBanking"></small>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="เลยบัญชี" name="numBanking" id="numBanking" value="">
+                </div>
+                <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
+                    <small id="errNumBanking"></small>
+                </div>
                 <div style="margin:0 auto;">
-                    <button type="submit" class="btn btn-warning btn-block" style="width:5vw;" id="confirmDelete"></a>ตกลง <i class="fas fa-edit"></i></button>
+                    <button type="submit" class="btn btn-warning btn-block" style="width:5vw;" onclick="addBanking()"></a>เพิ่ม <i class="fas fa-edit"></i></button>
                 </div>
             </div>
         </div>
 
+    </div>
 
+    <script type="text/javascript" src="../asset/js/script_global.js?version===1.0.3"></script>
+    <script type="text/javascript" src="../asset/js/fetch.js"></script>
+    <script type="text/javascript" src="../asset/js/script_banking.js?version===1.0.3"></script>
 
-
-
-        <script type="text/javascript" src="../asset/js/script_global.js?version===1.0.3"></script>
-        <script type="text/javascript" src="../asset/js/fetch.js"></script>
-        <script type="text/javascript" src="../asset/js/script_package.js?version===1.0.3"></script>
-
-
-
-        <!-- jQuery -->
-        <script src="../plugins/jquery/jquery.min.js"></script>
-        <!-- DataTables  & Plugins -->
-        <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-        <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-        <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-        <script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-        <script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-        <script src="../plugins/jszip/jszip.min.js"></script>
-        <script src="../plugins/pdfmake/pdfmake.min.js"></script>
-        <script src="../plugins/pdfmake/vfs_fonts.js"></script>
-        <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-        <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-        <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="../dist/js/adminlte.min.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="../dist/js/demo.js"></script>
-        <!-- Page specific script -->
-        <script>
-            $(document).ready(function() {
-                setTimeout(()=>{
-                    $('#example2').DataTable({
+    <!-- jQuery -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="../plugins/jszip/jszip.min.js"></script>
+    <script src="../plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="../plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
+    <!-- Page specific script -->
+    <!-- <script>
+        $(document).ready(function() {
+            setTimeout(() => {
+                $('#example2').DataTable({
                     "paging": true,
                     "lengthChange": false,
                     "searching": false,
@@ -247,25 +265,26 @@
                     "autoWidth": true,
                     "responsive": true,
                 });
-                }, 100);
-            });
-        </script>
+            }, 100);
+        });
+    </script> -->
 
-        <script>
-            var modal = document.getElementById("myModal");
-            var span = document.getElementsByClassName("close")[0];
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
+    <script>
+        var modal = document.getElementById("myModal");
+        var span = document.getElementsByClassName("close")[0];
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
                 modal.style.display = "none";
             }
+        }
+    </script>
 
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        </script>
 
 </body>
 

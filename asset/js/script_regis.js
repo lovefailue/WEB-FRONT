@@ -1,3 +1,5 @@
+checkStatusLogin()
+
 function checkName(){
     const fname = document.getElementById("fname").value;
     const lname = document.getElementById("lname").value;

@@ -1,5 +1,5 @@
 async function load() {
-
+    checkStatusLogin()
     let resData = await getApi("../Code/connectDB/announce/get-list-announce.php", {});
     console.log(resData)
     rawData = resData.data;

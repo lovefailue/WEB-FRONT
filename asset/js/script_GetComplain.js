@@ -1,5 +1,5 @@
 async function load() {
-
+    checkStatusLogin()
     let resData = await getApi("../Code/connectDB/complain/get-list-complain.php", {});
     console.log(resData)
     rawData = resData.data;
