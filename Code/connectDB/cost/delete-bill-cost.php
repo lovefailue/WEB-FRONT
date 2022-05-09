@@ -1,5 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 if($_SERVER['REQUEST_METHOD']=='GET') {
     require ('model/cost.php');

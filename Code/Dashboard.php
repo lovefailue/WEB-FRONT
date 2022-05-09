@@ -225,6 +225,48 @@
         </div>
 
 
+
+        <div id="myModalEditUsername" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="input-group mb-3" style="display:none;">
+                    <input type="text" class="form-control" placeholder="ID" name="IDuser" id="IDuser" value="">
+                </div>
+                <!-- <p>Username</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="username" name="username" id="username" value="">
+                </div>
+                <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
+                    <small id="errUser"></small>
+                </div>
+                <br>
+
+                <p>Password ใหม่</p>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="Password ใหม่" name="newPass" id="newPass" value="">
+                </div>
+                <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
+                    <small id="errNewPass"></small>
+                </div>
+                <br>
+
+                <p>ใส่ Password อีกครั้ง</p>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="ใส่ Password อีกครั้ง" name="c_NewPass" id="c_NewPass" value="">
+                </div>
+                <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
+                    <small id="errCNewPass"></small>
+                </div> -->
+
+                <br>
+                <div style="margin:0 auto;">
+                    <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>ตกลง <i class="fas fa-edit"></i></button>
+                </div>
+            </div>
+        </div>
+
+
         <script type="text/javascript" src="../asset/js/script_global.js?version===1.0.3"></script>
         <script type="text/javascript" src="../asset/js/fetch.js"></script>
         <script type="text/javascript" src="../asset/js/script_showDashboard.js?version===1.0.3"></script>
@@ -296,6 +338,22 @@
             window.onclick = function(event) {
                 if (event.target == modalEditPass) {
                     modalEditPass.style.display = "none";
+                }
+            }
+        </script>
+
+        <script>
+            var modalEditUsername = document.getElementById("myModalEditUsername");
+            var span = document.getElementsByClassName("close")[2];
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modalEditUsername.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modalEditUsername) {
+                    modalEditUsername.style.display = "none";
                 }
             }
         </script>

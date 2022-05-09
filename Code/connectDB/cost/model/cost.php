@@ -189,6 +189,7 @@
             $query = "SELECT * FROM `receipt_cost`";
             try{
                 $stmt1 = $this->conn->prepare($query);
+                // $stmt1->bindParam(":receipt_id",$receipt_id,PDO::PARAM_STR);
                 $stmt1->execute();
                 $data = array();
                
@@ -274,12 +275,25 @@
                     $el = array(
                         "bank"               =>$row["bank"],
                         "number_banking"     =>$row["number_banking"],
-                        "name_banking"       =>$row["name_banking"]
+                        "name_banking"       =>$row["name_banking"],
+                        "banking_id"       =>$row["banking_id"]
                     );
                     array_push($data,$el);
                 }
 
                 return array("status"=>"success","msg"=>"get banking successfully","data"=>$data);
+            }catch(PDOException $e){
+                return array("status"=>"error","msg"=>$e->getMessage());
+            }
+        }
+        function DeleteBanking($banking_id){
+            $query = "DELETE FROM `banking` WHERE `banking_id`=:banking_id;";
+            try{
+                $stmt = $this->conn->prepare($query);
+                $stmt->bindParam(":banking_id",$banking_id,PDO::PARAM_STR);
+                $stmt->execute();
+
+                return array("status"=>"success","msg"=>"billcost deleted successfully");
             }catch(PDOException $e){
                 return array("status"=>"error","msg"=>$e->getMessage());
             }

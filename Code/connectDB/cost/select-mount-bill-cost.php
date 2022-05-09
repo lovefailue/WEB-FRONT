@@ -5,7 +5,7 @@ if($_SERVER['REQUEST_METHOD']=='GET') {
     require ('model/cost.php');
     // $jsonBody = json_decode(file_get_contents('php://input'), true);
     $account = new Cost();
-    $responseData = $account->GetDetailCost($_GET['cost_id']);
+    $responseData = $account->SelectMountCost($_GET['room'],$_GET['mount_cost']);
     if($responseData['status']=='error'){
         http_response_code(500);
         echo json_encode(array("status"=>"error","msg"=>$responseData['msg']));

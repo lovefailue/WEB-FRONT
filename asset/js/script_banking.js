@@ -17,7 +17,9 @@ function showDataBanking(dataBanking){
                 <td style="text-align: center;">${dataBanking[i].name_banking}</td>
                 <td style="text-align: center;">${dataBanking[i].number_banking}</td>
                 <td >
-                    <button type="submit" class="btn btn-primary" style="width:4vw; margin:0 auto;"></a>ลบ</button>
+                    <div style="width:4vw; margin:0 auto;">
+                        <button type="submit" class="btn btn-primary" style="width:4vw;" onclick="deleteBanking('${dataBanking[i].banking_id}')"></a>ลบ</button>
+                    </div>
                 </td>
             </tr >
             `
@@ -77,4 +79,13 @@ async function addBanking(){
         console.log(resData)
         window.location.reload();
     }
+}
+
+async function deleteBanking(bankingID){
+    reqBody = {
+        banking_id: bankingID
+    };
+    let resData = await getApi("../Code/connectDB/cost/delete-banking.php", reqBody);
+    window.location.reload();
+    console.log(resData)
 }

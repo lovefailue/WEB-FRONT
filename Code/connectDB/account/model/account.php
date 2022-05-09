@@ -183,9 +183,9 @@
                 $data = array();
                 while ($row=$stmt1->fetch()){
                     $el = array(
-                        "account_id"=>$row['account_id'],
+                        "status"=>$row['status'],
                         "room"=>$row['room'],
-                        "status"=>$row['status']
+                        "account_id"=>$row['account_id']
                     );
                     array_push($data,$el);
                 }

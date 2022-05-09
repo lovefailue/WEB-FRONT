@@ -1,5 +1,6 @@
 async function loadStatusAndCost() {
     checkStatusLogin()
+    
     let resDataStatus = await getApi("../Code/connectDB/account/account/get-list-all-profile.php", {});
     console.log(resDataStatus)
     rawDataStatus = resDataStatus.data;
@@ -27,7 +28,7 @@ function showDasboard(dataStatus) {
                 </td>
                 <td >
                     <div style="display:flex; flex-direction:row;">
-                        <button type="submit" class="btn btn-info" style="margin:0 auto; width:6vw;" ></a>Username</button>
+                        <button type="submit" class="btn btn-info" style="margin:0 auto; width:6vw;" onclick="dropdownEditUsername('${dataStatus[i].account_id}')"></a>Username</button>
                         <button type="submit" class="btn btn-secondary" style="margin:0 auto; width:6vw;" onclick="dropdownEditPass('${dataStatus[i].account_id}')"></a>Password</button>
                     </div>
                 </td>
@@ -70,6 +71,8 @@ async function logout(){
     await localStorage.setItem("status_login", "fail");
     window.open("login.php", "_self");
 }
+
+//<----------------------------------------------------------edit password------------------------------------------------------------------>
 
 function dropdownEditPass(accountID){
     var modal = document.getElementById("myModalEditPass");
@@ -146,6 +149,13 @@ async function editPass(){
     }
 }
 
+//-----------------------------------------------------------------edit username------------------------------------------------------------>
+
+function dropdownEditUsername(accountIDUser){
+    var modal = document.getElementById("myModalEditUsername");
+    modal.style.display = "block";
+    document.getElementById("IDuser").value = accountIDUser
+}
 
 
 

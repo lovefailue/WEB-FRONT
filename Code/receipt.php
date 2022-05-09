@@ -223,11 +223,11 @@
                     "lengthChange": false,
                     "searching": false,
                     "ordering": true,
-                    "info": false,
+                    "info": true,
                     "autoWidth": true,
                     "responsive": true,
                 });
-            }, 100);
+            }, 500);
         });
     </script>
 

@@ -19,7 +19,9 @@ function showReceipt(data) {
                 <td style="text-align: center;">${data[i].receipt_mount}</td>
                 <td style="text-align: center;">${data[i].receipt_date}</td>
                 <td >
-                    <button type="submit" class="btn btn-primary" style="margin:0 auto; width:8vw; margin-left:2vw;" onclick="showInfoReceipt('${data[i].receipt_id}')"></a>ดู</button>
+                    <div style="width:4vw; margin:0 auto;">
+                        <button type="submit" class="btn btn-primary" style="width:4vw;" onclick="showInfoReceipt('${data[i].receipt_id}')"></a>ดู</button>
+                    </div>    
                 </td>
             </tr >
             `
