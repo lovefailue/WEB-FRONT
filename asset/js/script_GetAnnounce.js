@@ -23,7 +23,7 @@ function showData(data) {
                         <span class="info-box-number">วันที่: ${data[i].date}</span>
                     </div>
                     <div class="colum">
-                        <button type="submit" class="btn btn-danger btn-block" style="width:5vw; margin-top:2vh;" onclick="deleteData('${data[i].announce_id}')"></a>ลบ <i class="fas fa-trash-alt"></i></button>
+                        <button type="submit" class="btn btn-danger swalDefaultError" style="width:5vw; margin-top:2vh;" onclick="deleteData('${data[i].announce_id}')"></a>ลบ <i class="fas fa-trash-alt"></i></button>
                     </div>
                 <!-- /.info-box-content -->
             </div>
@@ -33,12 +33,28 @@ function showData(data) {
 }
 
 async function deleteData(data) {
-    let reqBody = {
-        "announce_id": data
-    }
-    let resData = await getApi("../Code/connectDB/announce/delete-list-announce.php", reqBody);
-    console.log(resData)
-    window.location.reload();
+    var modal = document.getElementById("myModal");
+    modal.style.display = "block";
+
+    document.getElementById('confirmDelete').addEventListener("click", async function () {
+        let reqBody = {
+            announce_id: data
+        }
+        let resData = await getApi("https://btf-announce.inwcompro.com/sample/delete-announce.php", reqBody);
+        console.log(resData)
+
+
+        // window.location.reload();
+        if (resData.status == "success") {
+            swal.fire({
+                title: "ลบประกาศสำเร็จ",
+                icon: 'success'
+            })
+                .then(function () {
+                    window.location = "annouce.php"
+                });
+        }
+    });
 }
 
 // function checkNewTopic() {

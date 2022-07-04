@@ -9,43 +9,53 @@
 // }
 // load();
 
-function checkTopic(){
+function checkTopic() {
     const topic = document.getElementById("topic").value;
-    if(topic == "" ){
-        document.getElementById("errTopic").innerHTML="กรุณากรอกหัวเรื่อง";
+    if (topic == "") {
+        document.getElementById("errTopic").innerHTML = "กรุณากรอกหัวเรื่อง";
         return false;
     }
-    else{
-        document.getElementById("errTopic").innerHTML="";
+    else {
+        document.getElementById("errTopic").innerHTML = "";
         return true;
     }
 }
 
-function checkDes(){
+function checkDes() {
     const description = document.getElementById("description").value;
-    if(description == "" ){
-        document.getElementById("errDes").innerHTML="กรุณากรอกรายละเอียด";
+    if (description == "") {
+        document.getElementById("errDes").innerHTML = "กรุณากรอกรายละเอียด";
         return false;
     }
-    else{
-        document.getElementById("errDes").innerHTML="";
+    else {
+        document.getElementById("errDes").innerHTML = "";
         return true;
     }
 }
 
-async function add_announce(){
-    if(!checkTopic() || !checkDes()){
+async function add_announce() {
+    if (!checkTopic() || !checkDes()) {
         checkTopic()
         checkDes()
     }
-    else{
+    else {
         let reqBody = {
             topic: document.getElementById("topic").value,
             description: document.getElementById("description").value,
         };
-        let resData = await postApi("../Code/connectDB/announce/add-announce.php", reqBody);
-        console.log(resData);
-        window.open("annouce.php", "_self");
+        let resData = await postApi("https://btf-announce.inwcompro.com/sample/add-announce.php", reqBody);
+        console.log(resData.status);
+        if (resData.status == "success") {
+            swal.fire({
+                title: "เพิ่มประกาศสำเร็จ",
+                icon: 'success'
+            })
+            .then(function () {
+                window.location = "annouce.php"
+            });
+        }
+        // window.location.reload();
+
     }
 
 }

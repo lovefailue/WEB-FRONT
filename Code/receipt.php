@@ -33,9 +33,16 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../asset/css/style.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Toastr -->
+    <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
 
     <link rel="shortcut icon" href="#">
 </head>
@@ -106,7 +113,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="receipt.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
+                            <a href="receipt.php" class="nav-link" data-toggle="modal" data-target="#AddModal" style="background:#53a7d8;">
                                 <i class="fas fa-clipboard-list"></i>
                                 <p>
                                     สลิปจ่ายเงิน
@@ -122,7 +129,7 @@
                             </a>
                         </li>
                         <li class="nav-item" style="background-color: #FF6464; border-radius: 8px; ">
-                            <a href="login.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
+                            <a onclick="logout()" class="nav-link" data-toggle="modal" data-target="#AddModal">
                                 <i class="fas fa-sign-out-alt" style="color: #000000;"></i>
                                 <p style="color: #000000;">
                                     ออกจากระบบ
@@ -166,6 +173,7 @@
                                                 <th style="text-align: center">ค่าใช้จ่ายของเดือน</th>
                                                 <th style="text-align: center">เวลาจ่ายบิล</th>
                                                 <th style="text-align: center">ดูสลิปโอนเงิน</th>
+                                                <th style="text-align: center">ลบค่าใช้จ่าย</th>
                                             </tr>
                                         </thead>
                                         <tbody id="table_receipt"></tbody>
@@ -189,11 +197,26 @@
             </div>
         </div>
 
+        <div id="myModalDeleteReceipt" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div style="text-align: center;">
+                    <h2>จะลบรายละเอียดการจ่ายเงินนี้ใช่หรือไม่</h2>
+                </div>
+                <br>
+                <div style="margin:0 auto;">
+                    <button type="submit" class="btn btn-warning btn-block" style="width:5vw;" id="confirmDeleteReceipt"></a>ตกลง <i class="fas fa-edit"></i></button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script type="text/javascript" src="../asset/js/script_global.js?version===1.0.3"></script>
     <script type="text/javascript" src="../asset/js/fetch.js"></script>
     <script type="text/javascript" src="../asset/js/script_receipt.js?version===1.0.3"></script>
+    <script type="text/javascript" src="../asset/js/script_logout.js?version===1.0.3"></script>
 
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
@@ -214,6 +237,12 @@
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
+    <!-- Toastr -->
+    <script src="../plugins/toastr/toastr.min.js"></script>
+
     <!-- Page specific script -->
     <script>
         $(document).ready(function() {
@@ -243,6 +272,22 @@
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
+            }
+        }
+    </script>
+
+    <script>
+        var modalDeleteReceipt = document.getElementById("myModalDeleteReceipt");
+        var span = document.getElementsByClassName("close")[1];
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modalDeleteReceipt.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modalDeleteReceipt) {
+                modalDeleteReceipt.style.display = "none";
             }
         }
     </script>

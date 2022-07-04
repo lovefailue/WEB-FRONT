@@ -1,6 +1,6 @@
 async function load() {
     checkStatusLogin()
-    let resData = await getApi("../Code/connectDB/complain/get-list-complain.php", {});
+    let resData = await getApi("https://btf-complain.inwcompro.com/sample/get-list-complain.php", {});
     console.log(resData)
     rawData = resData.data;
     console.log(rawData)
@@ -58,6 +58,15 @@ async function editStatusCom(date) {
         date: date,
         status: "รับเรื่องแล้ว"
     };
-    let resData = await postApi("../Code/connectDB/complain/edit-status-complain.php", reqBody);
-    window.location.reload();
+    let resData = await postApi("https://btf-complain.inwcompro.com/sample/edit-status-complain.php", reqBody);
+    
+    if (resData.status == "success") {
+        swal.fire({
+            title: "รับเรื่องเรียบร้อย",
+            icon: 'success'
+        })
+            .then(function () {
+                window.location.reload();
+            });
+    }
 }

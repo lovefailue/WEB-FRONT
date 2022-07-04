@@ -37,6 +37,13 @@
     <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
+
     <link rel="shortcut icon" href="#">
 </head>
 
@@ -98,7 +105,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="banking.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
+                            <a href="banking.php" class="nav-link" data-toggle="modal" data-target="#AddModal" style="background:#53a7d8;">
                                 <i class="far fa-credit-card"></i>
                                 <p>
                                     บัญชีธนาคาร
@@ -122,7 +129,7 @@
                             </a>
                         </li>
                         <li class="nav-item" style="background-color: #FF6464; border-radius: 8px; ">
-                            <a href="login.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
+                            <a onclick="logout()" class="nav-link" data-toggle="modal" data-target="#AddModal">
                                 <i class="fas fa-sign-out-alt" style="color: #000000;"></i>
                                 <p style="color: #000000;">
                                     ออกจากระบบ
@@ -227,11 +234,26 @@
             </div>
         </div>
 
+        <div id="ModalDeleteBanking" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div style="text-align: center;">
+                    <h2>ต้องการลบบัญชีธนาคารนี้ใช่หรือไม่</h2>
+                </div>
+                <br>
+                <div style="margin:0 auto;">
+                    <button type="submit" class="btn btn-warning btn-block" style="width:5vw;" id="confirmDelete"></a>ตกลง <i class="fas fa-edit"></i></button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script type="text/javascript" src="../asset/js/script_global.js?version===1.0.3"></script>
     <script type="text/javascript" src="../asset/js/fetch.js"></script>
     <script type="text/javascript" src="../asset/js/script_banking.js?version===1.0.3"></script>
+    <script type="text/javascript" src="../asset/js/script_logout.js?version===1.0.3"></script>
 
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
@@ -248,6 +270,10 @@
     <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
+    <!-- Toastr -->
+    <script src="../plugins/toastr/toastr.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
@@ -281,6 +307,22 @@
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
+            }
+        }
+    </script>
+    
+    <script>
+        var modalDelete = document.getElementById("ModalDeleteBanking");
+        var span = document.getElementsByClassName("close")[1];
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modalDelete.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modalDelete) {
+                modalDelete.style.display = "none";
             }
         }
     </script>

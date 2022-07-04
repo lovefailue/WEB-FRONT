@@ -9,7 +9,7 @@ async function load() {
     reqBody = {
         account_id: accountId
     };
-    let resData = await getApi("../Code/connectDB/account/account/get-list-room-profile.php", reqBody);
+    let resData = await getApi("https://btf-account.inwcompro.com/account/get-list-room-profile.php", reqBody);
     dataA = resData.data
 
     showData(dataA)
@@ -17,20 +17,18 @@ async function load() {
 load();
 
 async function showData(dataA) {
-    document.getElementById("room").innerHTML = dataA[0].room;
 
-    reqBody = {
-        room: dataA[0].room
-    };
-    let resData = await getApi("../Code/connectDB/delivery/get-list-post.php", reqBody);
-    dataPack = resData.data
-    // console.log(dataPack)
+    try {
+        document.getElementById("room").innerHTML = dataA[0].room;
+        let resData = await axios.get("https://btf-delivery.inwcompro.com/v1/" + dataA[0].room);
+        dataPack = resData.data.data
+        console.log(dataPack)
 
-    tablePost = document.getElementById("table_post")
-    if (dataPack != null) {
-        for (let i = 0; i < dataPack.length; i++) {
-            if (dataPack[i].status == "ยังไม่ได้รับ") {
-                tablePost.innerHTML += `
+        tablePost = document.getElementById("table_post")
+        if (dataPack != null) {
+            for (let i = 0; i < dataPack.length; i++) {
+                if (dataPack[i].status == "ยังไม่ได้รับ") {
+                    tablePost.innerHTML += `
             <tr>
                 <td style="text-align: center;">${dataPack[i].post_id}</td>
                 <td style="text-align: center;">${dataPack[i].date}</td>
@@ -49,8 +47,8 @@ async function showData(dataA) {
                 </td>
             </tr>
             `
-            } else if (dataPack[i].status == "รับพัสดุแล้ว") {
-                tablePost.innerHTML += `
+                } else if (dataPack[i].status == "รับพัสดุแล้ว") {
+                    tablePost.innerHTML += `
             <tr>
                 <td style="text-align: center;">${dataPack[i].post_id}</td>
                 <td style="text-align: center;">${dataPack[i].date}</td>
@@ -66,9 +64,26 @@ async function showData(dataA) {
                 </td>
             </tr>
             `
-            }
+                }
 
+            }
         }
+    }
+    catch (err) {
+        console.log(err.response)
+    }
+
+}
+
+function checkNumPost() {
+    const numPost = document.getElementById("NumPost").value;
+    if (numPost == "") {
+        document.getElementById("errNumPost").innerHTML = "กรุณากรอกเลขพัสดุ";
+        return false;
+    }
+    else {
+        document.getElementById("errNumPost").innerHTML = "";
+        return true;
     }
 }
 
@@ -78,25 +93,45 @@ async function addPostLoad() {
     });
 
     let accountId = params.accountId;
-    console.log(accountId);
+    // console.log(accountId);
     reqBodyLoad = {
         account_id: accountId
     };
-    let resDataLoad = await getApi("../Code/connectDB/account/account/get-list-room-profile.php", reqBodyLoad);
+    let resDataLoad = await getApi("https://btf-account.inwcompro.com/account/get-list-room-profile.php", reqBodyLoad);
     dataAdd = resDataLoad.data
     addPost(dataAdd)
 }
 
 async function addPost(data) {
     // console.log(data[0].room)
-    let reqBodyAdd = {
-        post_id: document.getElementById("NumPost").value,
-        room: data[0].room
-    };
-    let resDataAdd = await postApi("../Code/connectDB/delivery/create-post.php", reqBodyAdd);
-    console.log(resDataAdd);
-    window.location.reload();
+    if (!checkNumPost()) {
+        checkNumPost()
+    }
+    else {
+        let reqBodyAdd = {
+            post_id: document.getElementById("NumPost").value,
+            room: data[0].room
+        };
+        try {
+            let resDataAdd = await axios.post("https://btf-delivery.inwcompro.com/v1", reqBodyAdd);
+            console.log(resDataAdd.data)
+            let alertAdd = resDataAdd.data.status;
+            if (alertAdd == "success") {
+                swal.fire({
+                    title: "เพิ่มพัสดุสำเร็จ",
+                    icon: 'success'
+                })
+                    .then(function () {
+                        window.location.reload();
+                    });
+            }
+        }
+        catch (err) {
+            console.log(err.response)
+        }
+    }
 }
+
 
 async function editStatusPost(postID) {
     document.getElementById("editStatusPost").value = postID
@@ -104,22 +139,50 @@ async function editStatusPost(postID) {
         post_id: postID,
         status: "รับพัสดุแล้ว"
     };
-    let resDataEdit = await postApi("../Code/connectDB/delivery/edit-status-post.php", reqBodyEdit);
-    console.log(resDataEdit)
-    window.location.reload();
+    try {
+        let resDataEdit = await axios.put("https://btf-delivery.inwcompro.com/v1/", reqBodyEdit);
+        let alertEdit = resDataEdit.data.status;
+        console.log(resDataEdit.data.status)
+        if (alertEdit == "success") {
+            swal.fire({
+                title: "แก้ไขสถานะพัสดุสำเร็จ",
+                icon: 'success'
+            })
+                .then(function () {
+                    window.location.reload();
+                });
+        }
+    }
+    catch (err) {
+        console.log(err.response)
+    }
 }
 
-function deletePost(postID){
+function deletePost(postID) {
+
     var modal = document.getElementById("myModal");
     modal.style.display = "block";
     // console.log(topic)
-    document.getElementById('confirmDelete').addEventListener("click",async function() {
-        reqBody = {
-            post_id: postID
-        };
-        let resDataPost = await getApi("../Code/connectDB/delivery/delete-post.php", reqBody);
-        window.location.reload();
-        console.log(resDataPost)
-    }); 
-    
+    document.getElementById('confirmDelete').addEventListener("click", async function () {
+
+        try {
+            let resData = await axios.delete("https://btf-delivery.inwcompro.com/v1/" + postID)
+            // console.log(resData.data)
+            let alertDelete = resData.data.status;
+            if (alertDelete == "success") {
+                swal.fire({
+                    title: "ลบพัสดุสำเร็จ",
+                    icon: 'success'
+                })
+                    .then(function () {
+                        window.location.reload();
+                    });
+            }
+        }
+        catch (err) {
+            console.log(err.response)
+        }
+
+    });
+
 }

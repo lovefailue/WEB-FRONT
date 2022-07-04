@@ -5,12 +5,13 @@ async function load() {
     });
 
     let accountId = params.accountId;
-    console.log(accountId);
+    // console.log(accountId);
     reqBody = {
         account_id: accountId
     };
-    let resData = await getApi("../Code/connectDB/account/account/get-list-room-profile.php", reqBody);
+    let resData = await getApi("https://btf-account.inwcompro.com/account/get-list-room-profile.php", reqBody);
     dataA = resData.data
+    // console.log(dataA)
 
     showData(dataA)
 }
@@ -21,6 +22,7 @@ function showData(dataA) {
     document.getElementById("room").innerHTML = dataA[0].room;
     document.getElementById("fname").innerHTML = dataA[0].fname;
     document.getElementById("lname").innerHTML = dataA[0].lanme;
+    document.getElementById("age").innerHTML = dataA[0].age;
     document.getElementById("tel").innerHTML = dataA[0].tel;
     document.getElementById("email").innerHTML = dataA[0].email;
 }
@@ -97,7 +99,7 @@ async function loadForAddCost() {
     reqBody = {
         account_id: accountId
     };
-    let resData = await getApi("../Code/connectDB/account/account/get-list-room-profile.php", reqBody);
+    let resData = await getApi("https://btf-account.inwcompro.com/account/get-list-room-profile.php", reqBody);
     dataA = resData.data
     AddBillCost(dataA)
 }
@@ -123,11 +125,19 @@ async function AddBillCost(data) {
             room_cost: RoomCost,
             elc_unit: ElcUnit,
             total: Total,
-            mount_cost: AddMonth
+            month_cost: AddMonth
         };
-        let resData = await postApi("../Code/connectDB/cost/add-bill-cost.php", reqBody);
+        let resData = await postApi("https://btf-cost.inwcompro.com/sample/add-bill-cost.php", reqBody);
         // console.log(resData)
-        window.location.reload();
+        if (resData.status == "success") {
+            swal.fire({
+                title: "เพิ่มค่าใช้จ่ายสำเร็จสำเร็จ",
+                icon: 'success'
+            })
+            .then(function () {
+                window.location.reload();
+            });
+        }
     }
 }
 
@@ -137,41 +147,42 @@ async function loadBillCost() {
     });
 
     let accountId = params.accountId;
-    console.log(accountId);
+    // console.log(accountId);
     reqBody = {
         account_id: accountId
     };
-    let resData = await getApi("../Code/connectDB/account/account/get-list-room-profile.php", reqBody);
+    let resData = await getApi("https://btf-account.inwcompro.com/account/get-list-room-profile.php", reqBody);
     dataA = resData.data
 
 
     reqBody = {
         room: dataA[0].room
     };
-    let resDataBill = await getApi("../Code/connectDB/cost/get-list-room-bill-cost.php", reqBody);
-    console.log(resDataBill)
-    showBillCost(resDataBill)
+    let resDataBill = await getApi("https://btf-cost.inwcompro.com/sample/get-list-room-bill-cost.php", reqBody);
+    // console.log(resDataBill)
+    showBillCost(resDataBill.data)
 }
 
-function showBillCost(data) {
+function showBillCost(showData) {
+    // console.log(showData)
     var Month = document.getElementById("getMonth").value
 
-    boxBillCost = document.getElementById("box_billCost")
-    var showData = data.data
-    console.log(Month)
+    
+    // console.log(showData.length)
 
     if (showData != null) {
-        boxBillCost.innerHTML = ""
+        let ELstr = "";
+        document.getElementById("box_billCost").innerHTML = ""
         for (var i = 0; i < showData.length; i++) {
-            if (showData[i].mount_cost == Month) {
+            if (showData[i].month_cost == Month) {
                 if(showData[i].status == "ค้างชำระ")
                 {
-                    boxBillCost.innerHTML += `
+                    ELstr += `
                 <tr>
                     <td style="text-align: center;">${showData[i].elc_cost}</td>
                     <td style="text-align: center;">${showData[i].water_cost}</td>
                     <td style="text-align: center;">${showData[i].room_cost}</td>
-                    <td style="text-align: center;">${showData[i].elc_cost}</td>
+                    <td style="text-align: center;">${showData[i].total}</td>
                     <td style="text-align: center;width:13vw;">
                         <div class="th1">
                             <div class="th1_1">${showData[i].status}</div>
@@ -184,12 +195,12 @@ function showBillCost(data) {
                 `
                 }
                 else if(showData[i].status == "ชำระเรียบร้อย"){
-                    boxBillCost.innerHTML += `
+                    ELstr += `
                 <tr>
                     <td style="text-align: center;">${showData[i].elc_cost}</td>
                     <td style="text-align: center;">${showData[i].water_cost}</td>
                     <td style="text-align: center;">${showData[i].room_cost}</td>
-                    <td style="text-align: center;">${showData[i].elc_cost}</td>
+                    <td style="text-align: center;">${showData[i].total}</td>
                     <td style="text-align: center;width:13vw;">
                         <div class="th1">
                             <div class="th1_1" style="margin-left:2vw;">${showData[i].status}</div>
@@ -200,6 +211,7 @@ function showBillCost(data) {
                 }
             }
         }
+        document.getElementById("box_billCost").innerHTML = ELstr
     }
 }
 
@@ -209,7 +221,16 @@ async function EditStatusCost(costID){
         cost_id: costID,
         status: "ชำระเรียบร้อย"
     };
-    let resDataEdit = await postApi("../Code/connectDB/cost/edit-status-bill-cost.php", reqBodyEdit);
-    window.location.reload();
+    let resDataEdit = await postApi("https://btf-cost.inwcompro.com/sample/edit-status-bill-cost.php", reqBodyEdit);
+    // window.location.reload();
+    if (resDataEdit.status == "success") {
+        swal.fire({
+            title: "แก้ไขสถานะสำเร็จ",
+            icon: 'success'
+        })
+        .then(function () {
+            window.location.reload();
+        });
+    }
 }
 

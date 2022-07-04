@@ -165,7 +165,8 @@
                         "lanme"=>$row['lname'],
                         "tel"=>$row['tel'],
                         "email"=>$row['email'],
-                        "room"=>$row['room']
+                        "room"=>$row['room'],
+                        "age"=>$row['age']
                     );
                     array_push($data,$el);
                 }

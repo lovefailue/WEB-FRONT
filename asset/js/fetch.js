@@ -14,11 +14,7 @@ function getApi(path = "", paramsData = {}) {
             referrerPolicy: "no-referrer",
         });
         const status = res.status;
-        if (status == 200 || status == 400 || status == 404 || status == 500) {
-            return resolve(res.json());
-        } else {
-            return;
-        }
+        resolve(res.json());
     });
 }
 
@@ -40,11 +36,7 @@ function postApi(path = "", reqData = {}) {
             body: JSON.stringify(reqData),
         });
         const status = res.status;
-        if (status == 200 || status == 400 || status == 404 || status == 500) {
-            return resolve(res.json());
-        } else {
-            return;
-        }
+        resolve(res.json());
     });
 }
 

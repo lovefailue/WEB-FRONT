@@ -31,10 +31,16 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../asset/css/style.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Toastr -->
+    <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
 
     <link rel="shortcut icon" href="#">
 </head>
@@ -154,8 +160,9 @@
                                                 <th style="text-align: center">เลขที่ห้องพัก</th>
                                                 <th style="text-align: center">ข้อมูลผู้เข้าพัก</th>
                                                 <th style="text-align: center">จัดการพัสดุ</th>
-                                                <th style="text-align: center">แก้ไขUsername และpassword</th>
-                                                <th style="text-align: center">ลบข้อมูลผู้เข้าพัก</th>
+                                                <th style="text-align: center">แก้ไขPassword</th>
+                                                <th style="text-align: center">ปลดล็อคบัญชี</th>
+                                                <th style="text-align: center">ลบข้อมูลผู้เข้าพัก</th>   
                                             </tr>
                                         </thead>
                                         <tbody id="table_dasboard">
@@ -175,7 +182,7 @@
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <div style="text-align: center;">
-                    <h2>จะลบจริงอ่อ</h2>
+                    <h2>ต้องการลบบัญชีผู้ใช้นี้หรือไม่</h2>
                 </div>
                 <br>
                 <div style="margin:0 auto;">
@@ -226,50 +233,10 @@
 
 
 
-        <div id="myModalEditUsername" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div class="input-group mb-3" style="display:none;">
-                    <input type="text" class="form-control" placeholder="ID" name="IDuser" id="IDuser" value="">
-                </div>
-                <!-- <p>Username</p>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="username" name="username" id="username" value="">
-                </div>
-                <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
-                    <small id="errUser"></small>
-                </div>
-                <br>
-
-                <p>Password ใหม่</p>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Password ใหม่" name="newPass" id="newPass" value="">
-                </div>
-                <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
-                    <small id="errNewPass"></small>
-                </div>
-                <br>
-
-                <p>ใส่ Password อีกครั้ง</p>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="ใส่ Password อีกครั้ง" name="c_NewPass" id="c_NewPass" value="">
-                </div>
-                <div style="margin-top: -2vh; width:100%; text-align:center; height:2.8vh;">
-                    <small id="errCNewPass"></small>
-                </div> -->
-
-                <br>
-                <div style="margin:0 auto;">
-                    <button type="submit" class="btn btn-warning btn-block" style="width:5vw;"></a>ตกลง <i class="fas fa-edit"></i></button>
-                </div>
-            </div>
-        </div>
-
-
         <script type="text/javascript" src="../asset/js/script_global.js?version===1.0.3"></script>
         <script type="text/javascript" src="../asset/js/fetch.js"></script>
         <script type="text/javascript" src="../asset/js/script_showDashboard.js?version===1.0.3"></script>
+        <script type="text/javascript" src="../asset/js/script_logout.js?version===1.0.3"></script>
 
 
 
@@ -296,6 +263,8 @@
         <script src="../dist/js/demo.js"></script>
         <!-- SweetAlert2 -->
         <script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
+        <!-- Toastr -->
+        <script src="../plugins/toastr/toastr.min.js"></script>
         <!-- <script>
             $(function() {
                 $('#example2').DataTable({
@@ -342,21 +311,6 @@
             }
         </script>
 
-        <script>
-            var modalEditUsername = document.getElementById("myModalEditUsername");
-            var span = document.getElementsByClassName("close")[2];
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-                modalEditUsername.style.display = "none";
-            }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modalEditUsername) {
-                    modalEditUsername.style.display = "none";
-                }
-            }
-        </script>
 </body>
 
 </html>

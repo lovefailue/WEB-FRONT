@@ -1,6 +1,6 @@
 async function loadBanking(){
     checkStatusLogin()
-    let resData = await getApi("../Code/connectDB/cost/get-banking.php", "");
+    let resData = await getApi("https://btf-cost.inwcompro.com/sample/get-banking.php", "");
     dataBanking = resData.data
     console.log(dataBanking)
     showDataBanking(dataBanking)
@@ -18,7 +18,7 @@ function showDataBanking(dataBanking){
                 <td style="text-align: center;">${dataBanking[i].number_banking}</td>
                 <td >
                     <div style="width:4vw; margin:0 auto;">
-                        <button type="submit" class="btn btn-primary" style="width:4vw;" onclick="deleteBanking('${dataBanking[i].banking_id}')"></a>ลบ</button>
+                        <button type="submit" class="btn btn-block btn-danger" style="width:4vw;" onclick="deleteBanking('${dataBanking[i].banking_id}')"></a>ลบ</button>
                     </div>
                 </td>
             </tr >
@@ -30,7 +30,7 @@ function showDataBanking(dataBanking){
 function checkNameBanking() {
     const nameBanking = document.getElementById("nameBanking").value;
     if (nameBanking == "" || nameBanking == null) {
-        document.getElementById("errNameBanking").innerHTML = "กรุณากรอกยูนิตที่ใช้ไป";
+        document.getElementById("errNameBanking").innerHTML = "กรุณากรอกชื่อบัญชี";
         return false;
     }
     else {
@@ -42,7 +42,7 @@ function checkNameBanking() {
 function checkNumBanking() {
     const numBanking = document.getElementById("numBanking").value;
     if (numBanking == "" || numBanking == null) {
-        document.getElementById("errNumBanking").innerHTML = "กรุณากรอกยูนิตที่ใช้ไป";
+        document.getElementById("errNumBanking").innerHTML = "กรุณากรอกเลขบัญชี";
         return false;
     }
     else if(numBanking.length < 10){
@@ -75,17 +75,45 @@ async function addBanking(){
             number_banking: NumBanking,
             name_banking: NameBanking,
         };
-        let resData = await postApi("../Code/connectDB/cost/add-banking.php", reqBody);
+        let resData = await postApi("https://btf-cost.inwcompro.com/sample/add-banking.php", reqBody);
         console.log(resData)
-        window.location.reload();
+        if (resData.status == "success") {
+            swal.fire({
+                title: "เพิ่มบัญชีธนาคารสำเร็จ",
+                icon: 'success'
+            })
+            .then(function () {
+                window.location = "banking.php"
+            });
+        }
+        // window.location.reload();
     }
 }
 
-async function deleteBanking(bankingID){
-    reqBody = {
-        banking_id: bankingID
-    };
-    let resData = await getApi("../Code/connectDB/cost/delete-banking.php", reqBody);
-    window.location.reload();
-    console.log(resData)
+function deleteBanking(bankingID){
+    var modal = document.getElementById("ModalDeleteBanking");
+    modal.style.display = "block";
+    console.log(bankingID);
+
+    document.getElementById('confirmDelete').addEventListener("click",async function() {
+        let reqBody = {
+            banking_id: bankingID
+        };
+        let resData = await getApi("https://btf-cost.inwcompro.com/sample/delete-banking.php", reqBody);
+
+
+        if (resData.status == "success") {
+            swal.fire({
+                title: "ลบบัญชีธนาคารสำเร็จ",
+                icon: 'success'
+            })
+            .then(function () {
+                window.location = "banking.php"
+            });
+        }
+        // window.location.reload();
+        // console.log(resData)
+    }); 
+
+    
 }

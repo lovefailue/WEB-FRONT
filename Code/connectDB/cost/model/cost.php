@@ -297,6 +297,18 @@
             }catch(PDOException $e){
                 return array("status"=>"error","msg"=>$e->getMessage());
             }
+        }
+        function DeleteReceipt($receipt_id){
+            $query = "DELETE FROM `receipt_cost` WHERE `receipt_id`=:receipt_id;";
+            try{
+                $stmt = $this->conn->prepare($query);
+                $stmt->bindParam(":receipt_id",$receipt_id,PDO::PARAM_STR);
+                $stmt->execute();
+
+                return array("status"=>"success","msg"=>"receipt deleted successfully");
+            }catch(PDOException $e){
+                return array("status"=>"error","msg"=>$e->getMessage());
+            }
         } 
     }
 ?>

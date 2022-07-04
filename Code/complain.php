@@ -119,7 +119,7 @@
                             </a>
                         </li>
                         <li class="nav-item" style="background-color: #FF6464; border-radius: 8px; ">
-                            <a href="login.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
+                            <a onclick="logout()" class="nav-link" data-toggle="modal" data-target="#AddModal">
                                 <i class="fas fa-sign-out-alt" style="color: #000000;"></i>
                                 <p style="color: #000000;">
                                     ออกจากระบบ
@@ -201,6 +201,7 @@
         <script type="text/javascript" src="../asset/js/script_global.js?version===1.0.3"></script>
         <script type="text/javascript" src="../asset/js/fetch.js"></script>
         <script type="text/javascript" src="../asset/js/script_GetComplain.js?version===1.0.3"></script>
+        <script type="text/javascript" src="../asset/js/script_logout.js?version===1.0.3"></script>
 
 
         <!-- jQuery -->

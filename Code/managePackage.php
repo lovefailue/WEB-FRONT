@@ -7,8 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="author" content="Athipong Kaehom" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
@@ -33,9 +31,16 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../asset/css/style.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Toastr -->
+    <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
 
     <link rel="shortcut icon" href="#">
 </head>
@@ -122,7 +127,7 @@
                             </a>
                         </li>
                         <li class="nav-item" style="background-color: #FF6464; border-radius: 8px; ">
-                            <a href="login.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
+                            <a onclick="logout()" class="nav-link" data-toggle="modal" data-target="#AddModal">
                                 <i class="fas fa-sign-out-alt" style="color: #000000;"></i>
                                 <p style="color: #000000;">
                                     ออกจากระบบ
@@ -157,11 +162,14 @@
                             <button type="button" class="btn btn-block btn-success" onclick="addPostLoad()">เพิ่ม <i class="fas fa-plus-circle"></i></button>
                         </div>
                     </div>
+                    <div style="margin-top: -1vh; width:50%; height:2.8vh; margin-left:15vw;">
+                        <small id="errNumPost"></small>
+                    </div>
                 </div>
             </section>
 
 
-            
+
             <section class="content" style="width: 70%; margin-left: 12vw; ">
                 <div class="container-fluid">
                     <div class="row">
@@ -196,7 +204,7 @@
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <div style="text-align: center;">
-                    <h2>จะลบจริงอ่อ</h2>
+                    <h2>ต้องการลบพัสดุใช่หรือไม่</h2>
                 </div>
                 <br>
                 <div style="margin:0 auto;">
@@ -211,7 +219,9 @@
 
         <script type="text/javascript" src="../asset/js/script_global.js?version===1.0.3"></script>
         <script type="text/javascript" src="../asset/js/fetch.js"></script>
+        <script type="text/javascript" src="../asset/js/axios.min.js"></script>
         <script type="text/javascript" src="../asset/js/script_package.js?version===1.0.3"></script>
+        <script type="text/javascript" src="../asset/js/script_logout.js?version===1.0.3"></script>
 
 
 
@@ -234,20 +244,24 @@
         <script src="../dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="../dist/js/demo.js"></script>
+        <!-- SweetAlert2 -->
+        <script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
+        <!-- Toastr -->
+        <script src="../plugins/toastr/toastr.min.js"></script>
         <!-- Page specific script -->
         <script>
             $(document).ready(function() {
-                setTimeout(()=>{
+                setTimeout(() => {
                     $('#example2').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": false,
-                    "autoWidth": true,
-                    "responsive": true,
-                });
-                }, 100);
+                        "paging": true,
+                        "lengthChange": false,
+                        "searching": false,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": true,
+                        "responsive": true,
+                    });
+                }, 500);
             });
         </script>
 

@@ -32,9 +32,16 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../asset/css/style.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Toastr -->
+    <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
 
     <link rel="shortcut icon" href="#">
 
@@ -126,7 +133,7 @@
                             </a>
                         </li>
                         <li class="nav-item" style="background-color: #FF6464; border-radius: 8px; ">
-                            <a href="login.php" class="nav-link" data-toggle="modal" data-target="#AddModal">
+                            <a onclick="logout()" class="nav-link" data-toggle="modal" data-target="#AddModal">
                                 <i class="fas fa-sign-out-alt" style="color: #000000;"></i>
                                 <p style="color: #000000;">
                                     ออกจากระบบ
@@ -152,6 +159,10 @@
                         <div class="textAllDetail1">ชื่อ :</div>
                         <div class="textAllDetail2" id="fname"></div>
                         <div class="textAllDetail2" id="lname"></div>
+                    </div>
+                    <div class="textAllDetail">
+                        <div class="textAllDetail1">อายุ :</div>
+                        <div class="textAllDetail2" id="age"></div>
                     </div>
                     <div class="textAllDetail">
                         <div class="textAllDetail1">เบอร์โทร :</div>
@@ -324,6 +335,7 @@
     <script type="text/javascript" src="../asset/js/script_global.js?version===1.0.3"></script>
     <script type="text/javascript" src="../asset/js/fetch.js"></script>
     <script type="text/javascript" src="../asset/js/script_showData.js?version===1.0.3"></script>
+    <script type="text/javascript" src="../asset/js/script_logout.js?version===1.0.3"></script>
 
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
@@ -346,6 +358,10 @@
     <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
+    <!-- Toastr -->
+    <script src="../plugins/toastr/toastr.min.js"></script>
 
     <script>
         var modal = document.getElementById("myModal");

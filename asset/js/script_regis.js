@@ -98,9 +98,13 @@ function checkConfirmPassword(){
 
 function checkNumberRoom(){
     const room = document.getElementById("room").value;
-
-    if(room.length != 2){
+    if(room == ""){
+        document.getElementById("errRoom").innerHTML = "กรุณากรอกเลขห้อง";
+        return false;
+    }
+    else if(room.length != 2){
         document.getElementById("errRoom").innerHTML = "เลขห้องไม่ถูกต้อง"
+        return false;
     }
     else{
         document.getElementById("errRoom").innerHTML = "";
@@ -110,9 +114,13 @@ function checkNumberRoom(){
 
 function checkTelephonNumber(){
     const tel = document.getElementById("tel").value;
-
-    if(tel.length != 10){
+    if(tel == ""){
+        document.getElementById("errTel").innerHTML = "กรุณากรอกเบอร์โทรศัพย์";
+        return false;
+    }
+    else if(tel.length != 10){
         document.getElementById("errTel").innerHTML = "เบอร์โทรศัพท์ไม่ถูกต้อง"
+        return false;
     }
     else{
         document.getElementById("errTel").innerHTML = "";
@@ -120,8 +128,24 @@ function checkTelephonNumber(){
     }
 }
 
+function checkAge(){
+    const age = document.getElementById("age").value;
+    if(age == ""){
+        document.getElementById("errAge").innerHTML = "กรุณากรอกอายุ";
+        return false;
+    }
+    else if(age.length > 3){
+        document.getElementById("errAge").innerHTML = "อายุไม่ถูกต้อง"
+        return false;
+    }
+    else{
+        document.getElementById("errAge").innerHTML = "";
+        return true;
+    }
+}
+
 async function regis() {
-    if(!checkName() || !checkUsername() || !checkEmail() || !checkPassword() || !checkConfirmPassword() || !checkNumberRoom() || !checkTelephonNumber()){
+    if(!checkName() || !checkUsername() || !checkEmail() || !checkPassword() || !checkConfirmPassword() || !checkNumberRoom() || !checkTelephonNumber() || !checkAge()){
         checkName()
         checkUsername()
         checkEmail()
@@ -129,20 +153,31 @@ async function regis() {
         checkConfirmPassword()
         checkNumberRoom()
         checkTelephonNumber()
+        checkAge()
     }
     else{
         let reqBody = {
             fname: document.getElementById("fname").value,
             lname: document.getElementById("lname").value,
+            age: document.getElementById("age").value,
             room: document.getElementById("room").value,
             tel: document.getElementById("tel").value,
             email: document.getElementById("email").value,
             username: document.getElementById("username").value,
             password: document.getElementById("password").value
         };
-        let resData = await postApi("../Code/connectDB/account/account/create-account.php", reqBody);
-        console.log(resData);
-        window.open("Dashboard.php", "_self");
+        let resData = await postApi("https://btf-account.inwcompro.com/account/create-account.php", reqBody);
+        // console.log(resData);
+        // window.open("Dashboard.php", "_self");
+        if (resData.status == "success") {
+            swal.fire({
+                title: "สร้างบัญชีผู้ใช้สำเร็จ",
+                icon: 'success'
+            })
+            .then(function () {
+                window.open("Dashboard.php", "_self");
+            });
+        }
     }
     
 }
